@@ -15,7 +15,7 @@ function buildHeader(): {[key: string]: string} {
 // Vue.use(VueResource)
 // Vue.http.headers.common = buildHeader()
 
-const host = '//localhost:3002'
+const host = '/'
 
 let ax = axios.create({
     baseURL: host,

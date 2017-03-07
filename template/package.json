@@ -1,8 +1,8 @@
 {
-  "name": "test2",
+  "name": "{{ name }}",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Allenice <994298628@qq.com>",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
   "private": true,
   "scripts": {
     "dev": "ENV=dev node build/dev-server.js",

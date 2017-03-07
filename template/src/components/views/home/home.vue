@@ -6,10 +6,10 @@
             <button @click="testVuex">Test Vuex</button>
         </p>
         <ul>
-            <li>count: {{ count }}</li>
-            <li>doubleCount: {{ doubleCount }}</li>
-            <li>countWithOffset: {{ countWithOffset }}</li>
-            <li>content: {{ content }}</li>
+            <li>count: \{{ count }}</li>
+            <li>doubleCount: \{{ doubleCount }}</li>
+            <li>countWithOffset: \{{ countWithOffset }}</li>
+            <li>content: \{{ content }}</li>
         </ul>
     </div>
 </template>
