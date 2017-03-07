@@ -1,0 +1,6 @@
+<template>
+    <div>
+        <h1>${ComponentName}</h1>
+    </div>
+</template>
+<style src="./${componentName}.scss" lang="scss" scoped></style>

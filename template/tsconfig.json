@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": "./src",
+        "rootDirs": [
+            "./src"
+        ],
+        "alwaysStrict": true,
+        "allowJs": true,
+        "importHelpers": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es5",
+            "es2015.promise",
+            "es2015.generator",
+            "dom"
+        ]
+    }
+}
