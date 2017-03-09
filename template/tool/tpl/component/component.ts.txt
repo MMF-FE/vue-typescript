@@ -1,8 +1,8 @@
 import Vue from 'app/vueExt'
-import VueComponent from 'vue-class-component'
+import { Component } from 'vue-property-decorator'
 import * as Template from './${componentName}.vue'
 
-@VueComponent({
+@Component({
     mixins: [Template]
 })
 export default class ${ComponentName} extends Vue {

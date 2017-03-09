@@ -1,11 +1,10 @@
 import Vue from 'app/vueExt'
-import VueComponent from 'vue-class-component'
-import { Watch, Prop } from 'vue-property-decorator'
+import { Component, Watch, Prop } from 'vue-property-decorator'
 import { State, Mutation, Getter, Action} from 'vuex-class'
 import * as Template from './home.vue'
 import Hello from 'components/tags/hello'
 
-@VueComponent({
+@Component({
     name: 'Home',
     mixins: [Template],
     components: {
