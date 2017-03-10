@@ -41,7 +41,10 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        options: {
+            transpileOnly: true
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
