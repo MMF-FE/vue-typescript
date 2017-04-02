@@ -4,20 +4,24 @@ Vue.use(Router)
 
 let routes = []
 
-function addRoute(path: string, name: string, view: any) {
+function addRoute(path: string, name: string, component: any) {
     routes.push({
         path: path,
         name: name,
-        component: view.default
+        component: component
     })
     return addRoute
 }
 
 addRoute
-// home
-('/', 'home', require('components/views/home'))
-// default view
-('*', 'defaultView', require('components/views/home'))
+(
+    '/(home)?', 'home',
+    (r) => require.ensure([], () => r(require('components/views/home')['default']), 'home')
+)
+(
+    '*', 'defaultView',
+    (r) => require.ensure([], () => r(require('components/views/home')['default']), 'home')
+)
 
 export default new Router({
     routes: routes

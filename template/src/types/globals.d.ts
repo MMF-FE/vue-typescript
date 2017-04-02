@@ -9,13 +9,12 @@
 declare var require: {
     <T>(path: string): T
     (paths: string[], callback: (...modules: any[]) => void): void
-    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void
+    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void, chunkName?: string) => void
 }
-
 /**
  * md5
  */
-declare module 'blueimp-md5' {
+declare module 'md5' {
     const md5: (str: string) => string
     export = md5
 }

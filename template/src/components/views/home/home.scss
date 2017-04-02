@@ -12,3 +12,11 @@ ul {
 li {
     line-height: 1.6;
 }
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: resolve("logo.png") no-repeat center;
+    background-size: contain;
+}

@@ -35,7 +35,7 @@ const store = new Vuex.Store({
             }
 
             commit('updateContent', {
-                content: res.data.content
+                content: res.content
             })
         }
     }
