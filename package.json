@@ -1,10 +1,9 @@
 {
   "name": "vue-cli-template-typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Vue use typescript",
-  "scripts": {
-  },
+  "scripts": {},
   "devDependencies": {
     "vue-cli": "^2.8.1"
   }
