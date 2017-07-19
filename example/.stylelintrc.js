@@ -22,7 +22,80 @@ module.exports = {
         "selector-type-no-unknown": null,
         "selector-pseudo-element-colon-notation": null,
         "selector-pseudo-class-no-unknown": null,
-        "number-leading-zero": null
+        "number-leading-zero": null,
         // 属性顺序
+        "property-no-unknown": [true, {
+            ignoreProperties: ["composes"]
+        }],
+        // 属性顺序
+        "order/order": [
+            "dollar-variables",
+            "custom-properties",
+            "declarations",
+            "rules",
+            "at-rules"
+        ],
+        "order/properties-order": [
+            "display",
+            "float",
+            "position",
+            {
+                "order": "flexible",
+                "properties": [
+                    "left",
+                    "top",
+                    "right",
+                    "bottom",
+                ]
+            },
+            "width",
+            "height",
+            "min-width",
+            "min-height",
+            "padding",
+            {
+                "order": "flexible",
+                "properties": [
+                    "padding-left",
+                    "padding-top",
+                    "padding-right",
+                    "padding-bottom"
+                ]
+            },
+            "margin",
+            {
+                "order": "flexible",
+                "properties": [
+                    "margin-left",
+                    "margin-top",
+                    "margin-right",
+                    "margin-bottom"
+                ]
+            },
+            "border",
+            {
+                "order": "flexible",
+                "properties": [
+                    "border-left",
+                    "border-top",
+                    "border-right",
+                    "border-bottom",
+                    "border-radius"
+                ]
+            },
+            "background",
+            {
+                "order": "flexible",
+                "properties": [
+                    "background-image",
+                    "background-position",
+                    "background-repeat",
+                    "background-size"
+                ]
+            },
+            "color",
+            "font",
+            "text"
+        ]
     }
 }

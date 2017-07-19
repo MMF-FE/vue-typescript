@@ -4,32 +4,31 @@
 
 import Router from 'vue-router'
 
-function getView (viewName) {
-    return resolve => {
-        require.ensure([], (require: any) => {
+function getView (name) {
+    return (resolve, reject) => {
+        require.ensure([], (require) => {
+            // resolve(require(`components/views/product/${name}`).default)
             let map = {
-                'product': require('components/views/product').default,
-                'productDetail': require('components/views/productDetail').default
+                'list': require('components/views/product/list').default,
+                'detail': require('components/views/product/detail').default
             }
 
-            resolve(map[viewName])
-        }, 'product')
+            resolve(map[name])
+        }, reject, 'product')
     }
 }
 
 let routes: Router.RouteConfig[] = [
     {
-        name: 'product',
+        name: 'product/list',
         path: '/product',
+        component: getView('list')
     },
     {
-        name: 'productDetail',
+        name: 'product/detail',
         path: '/product/:id',
+        component: getView('detail')
     }
 ]
-
-routes.forEach((v) => {
-    v.component = getView(v.name)
-})
 
 export default routes

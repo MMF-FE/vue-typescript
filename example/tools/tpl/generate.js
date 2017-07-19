@@ -10,7 +10,7 @@
 let fs = require('fs-extra')
 let path = require('path')
 let colors = require('colors')
-let confirm = require('../confirm')
+let confirm = require('../util/confirm')
 
 function compile (tplFile, data) {
     let conent = fs.readFileSync(tplFile, 'utf8')
@@ -18,25 +18,6 @@ function compile (tplFile, data) {
     return conent.replace(/\${(\w+)}/gi, function (match, name) {
         return data[name] ? data[name] : ''
     })
-}
-
-function fillZero (num) {
-    if (num < 10) {
-        return '0' + num
-    }
-
-    return num
-}
-
-function dateFormat (date) {
-    let year = date.getFullYear()
-    let month = fillZero(date.getMonth() + 1)
-    let day = fillZero(date.getDate())
-    let hour = fillZero(date.getHours())
-    let min = fillZero(date.getMinutes())
-    let sec = fillZero(date.getSeconds())
-
-    return `${year}-${month}-${day} ${hour}:${min}:${sec}`
 }
 
 function writeFiles (componentType, distPath, data) {
@@ -68,8 +49,6 @@ function writeFiles (componentType, distPath, data) {
 }
 
 module.exports = function (componentType, distPath, data) {
-    data.curDate = dateFormat(new Date())
-
     if (fs.existsSync(distPath)) {
         confirm(`The ${componentType} ${data.componentName} is exist. Do your want to override it?`, (flag) => {
             if (flag) {

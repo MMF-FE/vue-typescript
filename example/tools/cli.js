@@ -12,15 +12,19 @@ var os = require('os')
 var path = require('path')
 var yargs = require('yargs')
 var generate = require('./tpl/generate')
+var getGitUser = require('./util/getGitUser')
+var version = require('../package.json').version
+var getDate = require('./util/getDate')
 
+var gitUser = getGitUser()
 var user = os.userInfo({encoding: 'utf8'})
 
 yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
     type: {
         alias: 't',
         describe: 'The component type',
-        choices: ['view', 'ui', 'tag', ''],
-        default: ''
+        choices: ['view', 'ui', 'tag'],
+        default: 'view'
     },
     path: {
         alias: 'p',
@@ -42,13 +46,16 @@ yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
     componentPath = path.join(__dirname,'../' + args.path, args.type, componentPath)
 
     generate(args.type, componentPath, {
+        componentPath: args.componentName.replace(/\//g, '-'),
         componentName: componentName,
         ComponentName: ComponentName,
-        username: user.username
+        username: gitUser || user.username,
+        version: version,
+        curDate: getDate()
     })
 })
 .version(function () {
-    return require('../package.json').version
+    return version
 })
 .alias('version', 'v')
 .help()

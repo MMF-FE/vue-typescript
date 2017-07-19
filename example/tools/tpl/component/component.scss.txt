@@ -1,6 +1,7 @@
 /**
  * ${ComponentName}
  * @author ${username}
- * @since ${curDate}
+ * @date ${curDate}
+ * @since ${version}
  */
 @import "base/base";

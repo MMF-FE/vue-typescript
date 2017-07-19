@@ -1,7 +1,8 @@
 /**
  * ${ComponentName}
  * @author ${username}
- * @since ${curDate}
+ * @date ${curDate}
+ * @since ${version}
  */
 
 import Vue from 'components/base'
@@ -9,7 +10,7 @@ import { Component } from 'vue-property-decorator'
 import template from './${componentName}.vue'
 
 @Component({
-    name: '${ComponentName}',
+    name: '${componentPath}',
     mixins: [template]
 })
 export default class ${ComponentName} extends Vue {

@@ -1,7 +1,8 @@
 <!--
  * ${ComponentName}
  * @author ${username}
- * @since ${curDate}
+ * @date ${curDate}
+ * @since ${version}
  -->
 <template>
     <div>
