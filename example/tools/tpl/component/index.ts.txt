@@ -1,0 +1,7 @@
+/**
+ * ${ComponentName}
+ * @author ${username}
+ * @since ${curDate}
+ */
+import ${ComponentName} from './${componentName}'
+export default ${ComponentName}

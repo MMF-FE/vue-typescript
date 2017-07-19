@@ -1,0 +1,13 @@
+@import "base/base";
+
+#app {
+    margin-top: 60px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    text-align: center;
+
+    a {
+        color: $color-primary;
+    }
+}

@@ -1,0 +1,17 @@
+/**
+ * ${ComponentName}
+ * @author ${username}
+ * @since ${curDate}
+ */
+
+import Vue from 'components/base'
+import { Component } from 'vue-property-decorator'
+import template from './${componentName}.vue'
+
+@Component({
+    name: '${ComponentName}',
+    mixins: [template]
+})
+export default class ${ComponentName} extends Vue {
+
+}
