@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "Vue use typescript",
   "scripts": {},
-  "devDependencies": {
-    "vue-cli": "^2.8.1"
+  "dependencies": {
+    "vue-cli": "^2.8.2"
   }
 }
