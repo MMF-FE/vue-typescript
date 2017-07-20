@@ -2,7 +2,8 @@
  * For module import or split code use require
  */
 interface NodeRequire {
-    ensure: (paths: string[], callback: (require) => void, errorCallback?: (err) => void, chunkName?: string) => void
+    ensure(paths: string[], callback: (require) => void, chunkName?: string): void
+    ensure(paths: string[], callback: (require) => void, errorCallback?: (err) => void, chunkName?: string): void
 }
 
 /**

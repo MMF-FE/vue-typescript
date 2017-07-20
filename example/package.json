@@ -8,7 +8,8 @@
     "dev-build": "ENV=dev node build/build.js",
     "sit": "ENV=sit node build/build.js",
     "deploy": "ENV=deploy node build/build.js",
-    "svg": "vsvg -s ./src/assets/svg -t ./src/components/icons"
+    "svg": "vsvg -s ./src/assets/svg -t ./src/components/icons",
+    "cli": "node ./tools/cli.js"
   },
   "author": "allenice <994298628@qq.com> (http://blog.allenice233.com/)",
   "license": "ISC",

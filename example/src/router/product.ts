@@ -7,13 +7,7 @@ import Router from 'vue-router'
 function getView (name) {
     return (resolve, reject) => {
         require.ensure([], (require) => {
-            // resolve(require(`components/views/product/${name}`).default)
-            let map = {
-                'list': require('components/views/product/list').default,
-                'detail': require('components/views/product/detail').default
-            }
-
-            resolve(map[name])
+            resolve(require(`components/views/product/${name}/index.ts`))
         }, reject, 'product')
     }
 }

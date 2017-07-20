@@ -38,6 +38,7 @@ yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
     let componentPath = args.componentName
     let componentName = componentPath.substr(componentPath.lastIndexOf('/') + 1)
     let ComponentName = componentName[0].toLocaleUpperCase() + componentName.substr(1)
+    let type = args.type
 
     if (args.type) {
         args.type += 's'
@@ -46,7 +47,8 @@ yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
     componentPath = path.join(__dirname,'../' + args.path, args.type, componentPath)
 
     generate(args.type, componentPath, {
-        componentPath: args.componentName.replace(/\//g, '-'),
+        type: type,
+        componentPath: args.componentName.toLowerCase().replace(/\//g, '-'),
         componentName: componentName,
         ComponentName: ComponentName,
         username: gitUser || user.username,
