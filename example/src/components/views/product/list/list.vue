@@ -10,3 +10,8 @@
     </div>
 </template>
 <style src="./list.scss" lang="scss" module></style>
+<!--<style lang="scss" module>
+    .list {
+        color: green;
+    }
+</style>-->

@@ -1,8 +1,7 @@
 /**
 * confirm
-* @date 2017-03-07 17:01:16
 * @author Allenice
-* @link http://www.allenice233.com
+* @date 2017-03-07 17:01:16
 */
 
 'use strict'

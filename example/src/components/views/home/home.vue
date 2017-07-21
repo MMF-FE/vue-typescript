@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <hello name="Vue-Typescript"></hello>
+    <div class="view-home">
+        <hello name="Vue-Typescript" class="hello">
+            <h2 class="h2">This is H2</h2>
+        </hello>
         <router-link to="product">Product</router-link>
     </div>
 </template>

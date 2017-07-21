@@ -1,8 +1,7 @@
 /**
 * Generate component files
-* @date 2017-03-07 17:21:25
 * @author Allenice
-* @link http://www.allenice233.com
+* @date 2017-03-07 17:21:25
 */
 
 'use strict'

@@ -1,1 +1,19 @@
 @import "base/base";
+
+.view-home {
+    color: red;
+
+    .hello {
+        color: green;
+
+        /deep/ {
+            .h3 {
+                color: #0f8;
+            }
+        }
+    }
+
+    .h2 {
+        color: blue;
+    }
+}

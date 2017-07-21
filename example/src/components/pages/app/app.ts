@@ -7,4 +7,5 @@ import template from './app.vue'
     mixins: [template]
 })
 export default class App extends Vue {
+
 }
