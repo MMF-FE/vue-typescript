@@ -1,0 +1,38 @@
+/**
+ * Item
+ * @author Allenice <994298628@qq.com>
+ * @date 2017-07-21 11:33:14
+ * @since 1.0.0
+ */
+@import "base/base";
+
+li {
+    display: flex;
+    height: 40px;
+    padding-left: 10px;
+    border-bottom: 1px solid #dedede;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        .close {
+            display: block;
+        }
+    }
+}
+
+.label {
+    flex: 1;
+    cursor: default;
+    margin: 0 15px;
+}
+
+.close {
+    display: none;
+    width: 40px;
+    height: 100%;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}

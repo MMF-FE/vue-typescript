@@ -1,0 +1,27 @@
+/**
+ * Filter
+ * @author Allenice <994298628@qq.com>
+ * @date 2017-07-21 11:33:30
+ * @since 1.0.0
+ */
+@import "base/base";
+
+.filters {
+    text-align: center;
+
+    a {
+        padding: 5px 10px;
+        margin: 0 10px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background: none;
+        color: #4f4f4f;
+        cursor: pointer;
+    }
+
+    /deep/ {
+        .cur {
+            border: 1px solid $color-primary;
+        }
+    }
+}

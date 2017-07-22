@@ -1,9 +1,12 @@
 <template>
     <div class="view-home">
-        <hello name="Vue-Typescript" class="hello">
-            <h2 class="h2">This is H2</h2>
-        </hello>
-        <router-link to="product">Product</router-link>
+        <img src="~assets/images/logo.png">
+        <hello name="Vue-Typescript" class="hello"></hello>
+        <h2>Example</h2>
+        <div class="links">
+            <router-link to="product">css scoped</router-link>
+            <router-link to="todo">vuex</router-link>
+        </div>
     </div>
 </template>
 <style src="./home.scss" lang="scss" scoped></style>

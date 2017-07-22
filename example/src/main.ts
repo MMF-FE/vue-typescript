@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from 'components/pages/app'
 import router from 'router'
 import svgicon = require('vue-svgicon')
+import store from 'store'
 
 // import all icons
 import 'components/icons'
@@ -14,5 +15,6 @@ new Vue({
     el: '#app',
     template: '<App/>',
     router,
+    store,
     components: { App }
 })

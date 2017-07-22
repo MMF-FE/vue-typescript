@@ -24,7 +24,3 @@ declare module '*.vue' {
     let value: Vue.ComponentOptions<Vue>
     export = value
 }
-
-interface PlainObject {
-    [key:string]: any
-}

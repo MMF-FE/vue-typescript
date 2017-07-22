@@ -1,0 +1,31 @@
+/**
+ * InputBox
+ * @author Allenice <994298628@qq.com>
+ * @date 2017-07-21 11:48:03
+ * @since 1.0.0
+ */
+@import "base/base";
+
+.input-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(#dcdcdc, .5);
+
+    input[type="text"] {
+        flex: 1;
+        height: 40px;
+        padding: 0 15px;
+        margin-left: 10px;
+        border: 0;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #4f4f4f;
+        font-weight: 400;
+
+        &::placeholder {
+            opacity: 0.5;
+        }
+    }
+}

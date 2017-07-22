@@ -17,6 +17,7 @@
     "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
     "blueimp-md5": "^2.7.0",
+    "normalize.css": "^7.0.0",
     "qs": "^6.5.0",
     "vee-validate": "^2.0.0-rc.6",
     "vue": "^2.3.4",

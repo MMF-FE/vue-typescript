@@ -1,0 +1,32 @@
+/**
+ * Todo
+ * @author Allenice <994298628@qq.com>
+ * @date 2017-07-21 11:32:22
+ * @since 1.0.0
+ */
+@import "base/base";
+
+.view-todo {
+    max-width: 550px;
+    padding: 50px auto;
+    margin: 0 auto;
+}
+
+.title {
+    margin: 0;
+    color: rgba(175, 47, 47, 0.15);
+    font-size: 100px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.wrap {
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(#ddd, .5);
+}
+
+ul {
+    margin: 10px 0;
+}
+

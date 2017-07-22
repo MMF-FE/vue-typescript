@@ -1,19 +1,21 @@
 @import "base/base";
 
 .view-home {
-    color: red;
+    text-align: center;
 
-    .hello {
-        color: green;
-
-        /deep/ {
-            .h3 {
-                color: #0f8;
-            }
-        }
+    img {
+        margin-top: 60px;
     }
 
-    .h2 {
-        color: blue;
+    .hello,
+    h2 {
+        margin: 20px 0;
+    }
+
+    .links {
+        a {
+            margin: 0 15px;
+            text-decoration: underline;
+        }
     }
 }
