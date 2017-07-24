@@ -6,6 +6,11 @@
  */
 @import "base/base";
 
-.test {
-    font-size: 12px;
+div {
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    margin: 100px 0;
 }

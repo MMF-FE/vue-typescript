@@ -1,18 +1,18 @@
 /**
- * Add
+ * Child1
  * @author Allenice <994298628@qq.com>
- * @date 2017-07-18 23:26:44
+ * @date 2017-07-23 23:27:16
  * @since 1.0.0
  */
 
 import Vue from 'components/base'
 import { Component } from 'vue-property-decorator'
-import template from './add.vue'
+import template from './child1.vue'
 
 @Component({
-    name: 'product-add',
+    name: 'view-scoped-child1',
     mixins: [template]
 })
-export default class Add extends Vue {
+export default class Child1 extends Vue {
 
 }

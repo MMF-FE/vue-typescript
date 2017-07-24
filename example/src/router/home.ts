@@ -10,7 +10,8 @@ function getView (viewName) {
             let map = {
                 'home': require('components/views/home'),
                 'defaultView': require('components/views/home'),
-                'todo': require('components/views/todo')
+                'todo': require('components/views/todo'),
+                'scoped': require('components/views/scoped')
             }
 
             resolve(map[viewName])
@@ -21,20 +22,26 @@ function getView (viewName) {
 let routes: Router.RouteConfig[] = [
     {
         name: 'home',
-        path: '/',
+        path: '/'
     },
     {
         name: 'defaultView',
-        path: '*',
+        path: '*'
     },
     {
         name: 'todo',
         path: '/todo/:filter?'
+    },
+    {
+        name: 'scoped',
+        path: '/scoped'
     }
 ]
 
 routes.forEach((v) => {
-    v.component = getView(v.name)
+    if (!v.redirect && !v.component) {
+        v.component = getView(v.name)
+    }
 })
 
 export default routes

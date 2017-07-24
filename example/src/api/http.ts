@@ -59,7 +59,7 @@ function handleError (err) {
 }
 
 // http get method
-export function get<T>(url, data?: PlainObject): Promise<T> {
+export function get<T>(url, data?: Types.PlainObject): Promise<T> {
     return ax.get(url, {
         params: processData(data)
     }).then((res) => {
@@ -71,7 +71,7 @@ export function get<T>(url, data?: PlainObject): Promise<T> {
 }
 
 // http post method
-export function post<T>(url, data?: PlainObject): Promise<T> {
+export function post<T>(url, data?: Types.PlainObject): Promise<T> {
     return ax.post(url, processData(data))
     .then((res) => {
         return res.data

@@ -5,11 +5,15 @@
  * @since 1.0.0
  -->
 <template>
-    <div :class="$style.list">
-        <h1>List</h1>
+    <div class="list">
+        <ul>
+            <router-link tag="li" :to="`/product/${v}`" v-for="v in [1,2,3,4,5]" :key="v">
+                <a>Product {{ v }}</a>
+            </router-link>
+        </ul>
     </div>
 </template>
-<style src="./list.scss" lang="scss" module></style>
+<style src="./list.scss" lang="scss"></style>
 <!--<style lang="scss" module>
     .list {
         color: green;

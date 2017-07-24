@@ -26,6 +26,8 @@ import { types, module } from 'store/modules/todo'
     }
 })
 export default class Todo extends Vue {
+    @module.State(types.state.todos) allTodos
+
     @module.Getter(types.getter.fillterTodos) todos
 
     @module.Mutation(types.mutation.setFilter) setFilter

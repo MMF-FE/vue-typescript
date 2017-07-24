@@ -12,7 +12,7 @@
             <ul>
                 <todo-item v-for="(v, ix) in todos" :key="ix" :todo="v"></todo-item>
             </ul>
-            <todo-footer v-show="todos.length > 0"></todo-footer>
+            <todo-footer v-show="allTodos.length > 0"></todo-footer>
         </div>
     </div>
 </template>

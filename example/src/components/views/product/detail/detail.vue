@@ -6,7 +6,7 @@
  -->
 <template>
     <div>
-        <h1>Detail</h1>
+        <h1>Product {{ $route.params.id }}</h1>
     </div>
 </template>
-<style src="./detail.scss" lang="scss" module></style>
+<style src="./detail.scss" lang="scss" scoped></style>
