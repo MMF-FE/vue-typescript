@@ -31,6 +31,7 @@ export default class Todo extends Vue {
     @module.Getter(types.getter.filterTodos) todos
 
     @module.Mutation(types.mutation.setFilter) setFilter
+    @module.Mutation(types.mutation.clearData) clearData
 
     @module.Action(types.action.fetch) fetch
     @module.Action(types.action.save) save
@@ -48,5 +49,10 @@ export default class Todo extends Vue {
         if (this.$route.params && this.$route.params.filter) {
             this.setFilter(this.$route.params.filter)
         }
+    }
+
+    beforeDestroy () {
+        // 理论上是要清除掉大数据，但是这里 filter 使用链接的方式，所以不需要清掉
+        // this.clearData()
     }
 }

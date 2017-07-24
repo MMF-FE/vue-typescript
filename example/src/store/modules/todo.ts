@@ -77,6 +77,11 @@ let mutations = mutation(state, {
 
     clearComplete (state) {
         state.todos = state.todos.filter(v => !v.completed)
+    },
+
+    clearData () {
+        // 将大数据重置，以免一直存在内存
+        state.todos = []
     }
 })
 
