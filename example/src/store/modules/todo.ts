@@ -21,7 +21,7 @@ let state: TodoState = {
 
 /*** getters ***/
 let getters = getter(state, {
-    fillterTodos (state, getters) {
+    filterTodos (state, getters) {
         let filter = state.filter || 'all'
 
         switch (filter) {
