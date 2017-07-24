@@ -14,12 +14,12 @@ function getView (name) {
 
 let routes: Router.RouteConfig[] = [
     {
-        name: 'product/list',
+        name: 'productList',
         path: '/product',
         component: getView('list')
     },
     {
-        name: 'product/detail',
+        name: 'productDetail',
         path: '/product/:id',
         component: getView('detail')
     }

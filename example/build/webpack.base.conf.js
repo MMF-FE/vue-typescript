@@ -29,6 +29,7 @@ module.exports = {
             resolve('node_modules')
         ],
         alias: {
+            'vue$': 'vue/dist/vue.runtime.esm.js',
             'env': resolve(`src/env/${env}`),
             'assets': resolve('src/assets'),
             'md5': 'blueimp-md5'
