@@ -1,0 +1,19 @@
+{
+    "title": "vue-typescript",
+    "gitbook": ">3.0.0",
+    "plugins": [
+        "-fontsettings",
+        "github"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/MMF-FE/vue-typescript/tree/develop"
+        }
+    },
+    "links": {
+        "sharing": {
+            "facebook": false,
+            "twitter": false
+        }
+    }
+}
