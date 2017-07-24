@@ -13,9 +13,8 @@ Vue.use(svgicon, {
 
 new Vue({
     el: '#app',
-    template: '<App/>',
     router,
     store,
-    components: { App }
+    render: h => h(App)
 })
 
