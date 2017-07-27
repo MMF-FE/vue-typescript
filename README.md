@@ -2,7 +2,7 @@
 > vue2.x that use typescript.
 
 ## Documentation
-
+- [vue-typescript](https://mmf-fe.github.io/vue-typescript/) common questions specific to this template are answered and each part is described in greater detail
 - [svgicon](https://github.com/MMF-FE/vue-svgicon): A tool to create svg icon components. (vue 2.x)
 - [For Vue 2.0](http://vuejs.org/guide/): general information about how to work with Vue, not specific to this template
 
@@ -16,13 +16,6 @@ $ vue init MMF-FE/vue-typescript my-project
 $ cd my-project
 $ npm install
 $ npm run dev
-```
-
-If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
-Or you can do as follow:
-
-```bash
-PORT=3002 npm run dev
 ```
 
 ## What's Included
