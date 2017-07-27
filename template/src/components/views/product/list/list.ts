@@ -10,7 +10,7 @@ import { Component } from 'vue-property-decorator'
 import template from './list.vue'
 
 @Component({
-    name: 'product-list',
+    name: 'view-product-list',
     mixins: [template]
 })
 export default class List extends Vue {

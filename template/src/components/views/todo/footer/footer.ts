@@ -14,7 +14,7 @@ import Filters from '../filter'
 import { types, module} from 'store/modules/todo'
 
 @Component({
-    name: 'view-todo-footer',
+    name: 'tag-todo-footer',
     mixins: [template],
     components: {
         Filters

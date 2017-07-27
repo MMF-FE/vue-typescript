@@ -10,7 +10,7 @@ import { Component } from 'vue-property-decorator'
 import template from './detail.vue'
 
 @Component({
-    name: 'product-detail',
+    name: 'view-product-detail',
     mixins: [template]
 })
 export default class Detail extends Vue {

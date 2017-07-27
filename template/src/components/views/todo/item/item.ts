@@ -12,7 +12,7 @@ import template from './item.vue'
 import { types, module } from 'store/modules/todo'
 
 @Component({
-    name: 'view-todo-item',
+    name: 'tag-todo-item',
     mixins: [template]
 })
 export default class Item extends Vue {

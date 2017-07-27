@@ -23,5 +23,11 @@ yarn svg
 
 ## Cli Tool
 ```
-yarn cli add [componentName] -t [componentType]
+./tools/cli add [componentPath] -t [componentType]
+
+# use npm script
+npm run cli add [componentPath] -- -t [componentType]
+
+# use yarn
+yarn cli add [componentPath] -- -t [componentType]
 ```

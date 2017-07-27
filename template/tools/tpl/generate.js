@@ -49,7 +49,7 @@ function writeFiles (componentType, distPath, data) {
 
 module.exports = function (componentType, distPath, data) {
     if (fs.existsSync(distPath)) {
-        confirm(`The ${componentType} ${data.componentName} is exist. Do your want to override it?`, (flag) => {
+        confirm(`The component ${componentType}-${data.componentPath} is exist. Do your want to override it?`, (flag) => {
             if (flag) {
                 writeFiles(componentType, distPath, data)
             }

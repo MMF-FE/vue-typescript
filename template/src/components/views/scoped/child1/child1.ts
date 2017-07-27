@@ -10,7 +10,7 @@ import { Component } from 'vue-property-decorator'
 import template from './child1.vue'
 
 @Component({
-    name: 'view-scoped-child1',
+    name: 'tag-scoped-child1',
     mixins: [template]
 })
 export default class Child1 extends Vue {

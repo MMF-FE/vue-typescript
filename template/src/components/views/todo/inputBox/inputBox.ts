@@ -12,7 +12,7 @@ import template from './inputBox.vue'
 import { types, module } from 'store/modules/todo'
 
 @Component({
-    name: 'view-todo-inputbox',
+    name: 'tag-todo-inputbox',
     mixins: [template]
 })
 export default class InputBox extends Vue {

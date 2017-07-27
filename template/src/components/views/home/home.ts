@@ -5,7 +5,7 @@ import template from './home.vue'
 import Hello from 'components/tags/hello'
 
 @Component({
-    name: 'Home',
+    name: 'view-home',
     mixins: [template],
     components: {
         Hello

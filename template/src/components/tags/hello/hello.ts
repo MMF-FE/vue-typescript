@@ -3,7 +3,7 @@ import { Component, Prop } from 'vue-property-decorator'
 import template from './hello.vue'
 
 @Component({
-    name: 'Hello',
+    name: 'tag-hello',
     mixins: [template]
 })
 export default class Hello extends Vue {

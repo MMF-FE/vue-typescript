@@ -19,12 +19,10 @@ var getDate = require('./util/getDate')
 var gitUser = getGitUser()
 var user = os.userInfo({encoding: 'utf8'})
 
-yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
+yargs.command(['add <componentPath>', 'a'], 'Add a component to project', {
     type: {
         alias: 't',
-        describe: 'The component type',
-        choices: ['view', 'ui', 'tag'],
-        default: 'view'
+        describe: 'The component type'
     },
     path: {
         alias: 'p',
@@ -35,20 +33,23 @@ yargs.command(['add <componentName>', 'a'], 'Add a component to project', {
         alias: 'h'
     }
 }, function (args) {
-    let componentPath = args.componentName
+    let componentPath = args.componentPath
     let componentName = componentPath.substr(componentPath.lastIndexOf('/') + 1)
     let ComponentName = componentName[0].toLocaleUpperCase() + componentName.substr(1)
     let type = args.type
 
-    if (args.type) {
-        args.type += 's'
+    if (!type) {
+        type = componentPath.split('/')[0]
+        if (/s$/.test(type)) {
+            type = type.slice(0, -1)
+        }
     }
 
-    componentPath = path.join(__dirname,'../' + args.path, args.type, componentPath)
+    componentPath = path.join(__dirname,'../' + args.path, componentPath)
 
-    generate(args.type, componentPath, {
+    generate(type, componentPath, {
         type: type,
-        componentPath: args.componentName.toLowerCase().replace(/\//g, '-'),
+        componentPath: args.componentPath.toLowerCase().split('/').slice(1).join('-'),
         componentName: componentName,
         ComponentName: ComponentName,
         username: gitUser || user.username,

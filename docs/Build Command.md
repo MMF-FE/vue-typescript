@@ -24,26 +24,37 @@ npm run svg
   --version, -v  显示版本号                                               [布尔]
   --help, -h     显示帮助信息                                             [布尔]
   --type, -t     The component type
-                                  [可选值: "view", "ui", "tag"] [默认值: "view"]
   --path, -p     The target path                      [默认值: "src/components"]
 ```
+默认路径是从 **src/components** 开始的
 ```bash
 # 添加组件, 
-./tools/cli.js add [componentName] -t [componentType]
+./tools/cli add [componentPath] -t [componentType]
 
-# 如果只是添加 view, 而且已经安装 yarn
-yarn cli add [componentName] -t [componentType]
+# use npm script
+npm run cli add [componentPath] -- -t [componentType]
+
+# use yarn
+yarn cli add [componentPath] -- -t [componentType]
+```
+### -t
+**-t** 参数只是标记这个组件是什么类型的组件，可以根据这个参数选择不同的模板创建组件。默认是根据 componentPath 开始的路径名确定 component type。比如
+
+```
+# component type: view
+yarn cli add views/home
+
+# component type: tag
+yarn cli add tags/hello
+
+# component type: tag
+yarn cli add views/home/list -- -t tag
 ```
 
-componentName 可以是路径
-```bash
-./tools/cli.js add public/login -t view
-```
-以上会在 src/components/views/public/login 创建一个 view 类型的组件。
-##### 
+### -p
 **-p** 参数是指定根路径。如果你要创建的组件不在 **src/components**, 你可以通过设置该参数改变根路径。
 
 ```bash
-./tools/cli.js add hello -t tag -p demo/components
+yarn cli add tags/hello -- -p demo/components
 ```
 以上会在 demo/components/tags/hello 创建一个 tag 类型的组件。

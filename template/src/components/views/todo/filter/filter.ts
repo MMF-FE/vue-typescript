@@ -10,7 +10,7 @@ import { Component } from 'vue-property-decorator'
 import template from './filter.vue'
 
 @Component({
-    name: 'view-todo-filter',
+    name: 'tag-todo-filter',
     mixins: [template]
 })
 export default class Filter extends Vue {
