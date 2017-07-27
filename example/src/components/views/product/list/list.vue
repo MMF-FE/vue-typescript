@@ -13,9 +13,4 @@
         </ul>
     </div>
 </template>
-<style src="./list.scss" lang="scss"></style>
-<!--<style lang="scss" module>
-    .list {
-        color: green;
-    }
-</style>-->
+<style src="./list.scss" lang="scss" scoped></style>

@@ -11,7 +11,7 @@
     height: 40px;
     padding: 0 10px;
     font-size: 14px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     .filters {
@@ -19,6 +19,7 @@
     }
 
     .clear {
-        width: 100px;
+        width: 110px;
+        text-align: center;
     }
 }

@@ -9,7 +9,7 @@
         <div class="item-left">{{ remaining.length }} item left</div>
         <filters class="filters"></filters>
         <a class="clear" @click="clearComplete">
-            <span v-show="completed.length > 0">clear complete</span>
+            <span v-show="completed.length > 0">clear completed</span>
         </a>
     </div>
 </template>

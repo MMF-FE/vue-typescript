@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import App from 'components/pages/app'
 import router from 'router'
