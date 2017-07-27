@@ -1,44 +1,40 @@
+/**
+ * vuex store
+ */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
-import api from 'app/api'
+import { mutation } from './utils/vuexUtil'
+import keymirror from './utils/keymirror'
+
+// import modules
+import todo from './modules/todo'
 
 Vue.use(Vuex)
 
+let state: Types.State.RootState = {}
+
+let mutations = mutation(state, {})
+
 const store = new Vuex.Store({
-    state: {
-        count: 0,
-        content: ''
-    },
+    strict: process.env.NODE_ENV !== 'production',
 
-    mutations: {
-        'add' (state) {
-            state.count++
-        },
+    state: state,
 
-        'updateContent' (state, payload) {
-            state.content = payload.content
-        }
-    },
+    mutations: mutations,
 
-    getters: {
-        'doubleCount' (state) {
-            return state.count * 2
-        }
-    },
+    getters: {},
 
-    actions: {
-        async 'getContent' ({commit}, payload) {
-            let res = await api.getPackage(payload)
+    actions: {},
 
-            if (res instanceof Error) {
-                return Promise.reject(res)
-            }
-
-            commit('updateContent', {
-                content: res.content
-            })
-        }
+    modules: {
+        todo
     }
 })
+
+export let types = {
+    state: keymirror(state),
+    mutations: keymirror(mutations)
+}
 
 export default store

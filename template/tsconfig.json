@@ -18,6 +18,19 @@
             "es2015.promise",
             "es2015.generator",
             "dom"
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+            "typings"
         ]
-    }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "typings/**/*.ts"
+    ],
+    "exclude": [
+        "./dist",
+        "./static"
+    ]
 }

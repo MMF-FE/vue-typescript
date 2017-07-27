@@ -1,22 +1,21 @@
 @import "base/base";
 
-h2 {
-    color: #2c3e50;
-    font-weight: normal;
-}
+.view-home {
+    text-align: center;
 
-ul {
-    list-style: none;
-}
+    img {
+        margin-top: 60px;
+    }
 
-li {
-    line-height: 1.6;
-}
+    .hello,
+    h2 {
+        margin: 20px 0;
+    }
 
-.logo {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-    background: resolve("logo.png") no-repeat center;
-    background-size: contain;
+    .links {
+        a {
+            margin: 0 15px;
+            text-decoration: underline;
+        }
+    }
 }

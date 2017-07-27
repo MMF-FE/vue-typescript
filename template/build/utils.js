@@ -15,7 +15,6 @@ exports.cssLoaders = function (options) {
     var cssLoader = {
         loader: 'css-loader',
         options: {
-            importLoaders: 1,
             minimize: process.env.NODE_ENV === 'production',
             sourceMap: options.sourceMap
         }
@@ -23,9 +22,7 @@ exports.cssLoaders = function (options) {
 
     // generate loader string to be used with extract text plugin
     function generateLoaders(loader, loaderOptions) {
-        var loaders = [cssLoader, {
-            loader: 'postcss-loader'
-        }]
+        var loaders = [cssLoader]
         if (loader) {
             loaders.push({
                 loader: loader + '-loader',
@@ -56,7 +53,6 @@ exports.cssLoaders = function (options) {
         scss: generateLoaders('sass', {
             includePaths: [
                 path.join(__dirname, '../src/style'),
-                require('bourbon').includePaths,
                 path.join(__dirname, '../node_modules')
             ]
         }),

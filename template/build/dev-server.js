@@ -6,14 +6,13 @@ if (!process.env.NODE_ENV) {
 }
 
 var opn = require('opn')
+var portfinder = require('portfinder')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
-// default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
@@ -32,12 +31,12 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
     log: () => { }
 })
 // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function (compilation) {
-    compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-        hotMiddleware.publish({ action: 'reload' })
-        cb()
-    })
-})
+// compiler.plugin('compilation', function (compilation) {
+//     compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+//         hotMiddleware.publish({ action: 'reload' })
+//         cb()
+//     })
+// })
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
@@ -62,20 +61,28 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-var uri = 'http://localhost:' + port
-
-devMiddleware.waitUntilValid(function () {
-    console.log('> Listening at ' + uri + '\n')
-})
-
-module.exports = app.listen(port, function (err) {
+// default port where dev server listens for incoming traffic
+portfinder.basePort = process.env.PORT || config.dev.port
+portfinder.getPort((err, port) => {
     if (err) {
-        console.log(err)
-        return
+        return false
     }
 
-    // when env is testing, don't need open it
-    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-        opn(uri)
-    }
+    var uri = 'http://localhost:' + port
+
+    devMiddleware.waitUntilValid(function () {
+        console.log('> Listening at ' + uri + '\n')
+    })
+
+    app.listen(port, function (err) {
+        if (err) {
+            console.log(err)
+            return
+        }
+
+        // when env is testing, don't need open it
+        if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+            opn(uri)
+        }
+    })
 })

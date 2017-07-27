@@ -1,21 +1,22 @@
-import 'style/app.scss'
+{{#ie}}
+import "vue-svgicon/dist/polyfill"
+{{/ie}}
 import Vue from 'vue'
-import store from 'store'
 import App from 'components/pages/app'
-import router from 'app/router'
+import router from 'router'
 import svgicon = require('vue-svgicon')
+import store from 'store'
 
 // import all icons
 import 'components/icons'
-
 Vue.use(svgicon, {
     tagName: 'icon'
 })
 
 new Vue({
     el: '#app',
-    store,
     router,
-    template: '<App/>',
-    components: { App }
+    store,
+    render: h => h(App)
 })
+

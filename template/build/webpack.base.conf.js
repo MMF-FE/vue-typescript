@@ -3,6 +3,7 @@ var utils = require('./utils')
 var config = require('./config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var env = process.env.ENV || 'dev'
+var webpack = require('webpack')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -10,23 +11,30 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
+        style: './src/style/app.scss',
+        {{#if_eq ie true}}
+        app: ['babel-polyfill', './src/main.ts']
+        {{/if_eq}}
+        {{#if_eq ie false}}
         app: './src/main.ts'
+        {{/if_eq}}
     },
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
+        chunkFilename: '[name].bundle.js',
         publicPath: process.env.NODE_ENV === 'production'
             ? config.build.assetsPublicPath
             : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
+        extensions: ['.ts', '.vue', '.js', '.json'],
         modules: [
             resolve('src'),
             resolve('node_modules')
         ],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
+            'vue$': 'vue/dist/vue.runtime.esm.js',
             'env': resolve(`src/env/${env}`),
             'assets': resolve('src/assets'),
             'md5': 'blueimp-md5'
@@ -64,5 +72,10 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+
+    plugins: [
+        // 作用域提升，减少代码量，加快代码运行速度（webpack 3.0）
+        new webpack.optimize.ModuleConcatenationPlugin()
+    ]
 }
