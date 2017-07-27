@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "ENV=dev node build/dev-server.js",
-    "dev-build": "ENV=dev node build/build.js",
-    "sit": "ENV=sit node build/build.js",
-    "deploy": "ENV=deploy node build/build.js",
+    "build:dev": "ENV=dev node build/build.js",
+    "build:sit": "ENV=sit node build/build.js",
+    "build:deploy": "ENV=deploy node build/build.js",
     "svg": "vsvg -s ./src/assets/svg -t ./src/components/icons",
     "cli": "node ./tools/cli.js"
   },
