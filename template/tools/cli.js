@@ -24,9 +24,9 @@ yargs.command(['add <componentPath>', 'a'], 'Add a component to project', {
         alias: 't',
         describe: 'The component type'
     },
-    path: {
-        alias: 'p',
-        describe: 'The target path',
+    root: {
+        alias: 'r',
+        describe: 'The component root path',
         default: 'src/components'
     },
     help: {
@@ -45,7 +45,7 @@ yargs.command(['add <componentPath>', 'a'], 'Add a component to project', {
         }
     }
 
-    componentPath = path.join(__dirname,'../' + args.path, componentPath)
+    componentPath = path.join(__dirname,'../' + args.root, componentPath)
 
     generate(type, componentPath, {
         type: type,
