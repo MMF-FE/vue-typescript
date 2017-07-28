@@ -74,3 +74,14 @@ export * from './hello.ts'
 // 引入 'src/components/tags/hello'
 import Hello from 'components/tags/hello'
 ```
+如果你使用 vscode 开发的话，建议设置以下选项：
+```json
+{
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    }
+}
+```
+这样你 import 的时候就有路径提示。
