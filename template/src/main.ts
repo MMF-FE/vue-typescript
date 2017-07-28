@@ -1,5 +1,5 @@
 {{#ie}}
-import "vue-svgicon/dist/polyfill"
+import 'vue-svgicon/dist/polyfill'
 {{/ie}}
 import Vue from 'vue'
 import App from 'components/pages/app'
