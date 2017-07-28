@@ -21,10 +21,10 @@ npm run svg
 使用 **./tools/cli.js** 添加组件。
 ```text
 选项：
-  --version, -v  显示版本号                                               [布尔]
-  --help, -h     显示帮助信息                                             [布尔]
+  --version, -v  显示版本号                       [布尔]
+  --help, -h     显示帮助信息                     [布尔]
   --type, -t     The component type
-  --path, -p     The target path                      [默认值: "src/components"]
+  --root, -r     The component root path        [默认值: "src/components"]
 ```
 默认路径是从 **src/components** 开始的
 ```bash
@@ -51,10 +51,10 @@ yarn cli add tags/hello
 yarn cli add views/home/list -- -t tag
 ```
 
-### -p
-**-p** 参数是指定根路径。如果你要创建的组件不在 **src/components**, 你可以通过设置该参数改变根路径。
+### -r
+**-r** 参数是指定根路径。如果你要创建的组件不在 **src/components**, 你可以通过设置该参数改变根路径。
 
 ```bash
-yarn cli add tags/hello -- -p demo/components
+yarn cli add tags/hello -- -r demo/components
 ```
 以上会在 demo/components/tags/hello 创建一个 tag 类型的组件。
