@@ -10,7 +10,9 @@ function getView (viewName) {
             let map = {
                 'home': require('components/views/home'),
                 'defaultView': require('components/views/home'),
+                {{#vuex}}
                 'todo': require('components/views/todo'),
+                {{/vuex}}
                 'scoped': require('components/views/scoped')
             }
 
@@ -28,10 +30,12 @@ let routes: Router.RouteConfig[] = [
         name: 'defaultView',
         path: '*'
     },
+    {{#vuex}}
     {
         name: 'todo',
         path: '/todo/:filter?'
     },
+    {{/vuex}}
     {
         name: 'scoped',
         path: '/scoped'

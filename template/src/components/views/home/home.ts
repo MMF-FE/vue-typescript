@@ -12,5 +12,10 @@ import Hello from 'components/tags/hello'
     }
 })
 export default class Home extends Vue {
+    async created () {
+        // api example
+        let res = await this.api.getPackage({})
+        console.log(res.content)
+    }
 }
 

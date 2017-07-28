@@ -26,8 +26,18 @@ module.exports = {
     },
     "ie": {
       "type": "confirm",
-      "message": "Suport IE or older browser?"
+      "message": "Support IE or older browser?"
+    },
+    "vuex": {
+      "type": "confirm",
+      "message": "Use vuex?"
     }
+  },
+  "filters": {
+    "src/components/views/todo/**/*": "vuex",
+    "src/store/**/*": "vuex",
+    "typings/interface/todo.d.ts": "vuex",
+    "typings/interface/state.d.ts": "vuex"
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev.{{/inPlace}}"
 }

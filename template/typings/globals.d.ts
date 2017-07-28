@@ -20,7 +20,6 @@ declare module 'env' {
 }
 
 declare module '*.vue' {
-    import * as Vue from 'vue'
-    let value: Vue.ComponentOptions<Vue>
-    export = value
+    import Vue from 'vue'
+    export default Vue
 }

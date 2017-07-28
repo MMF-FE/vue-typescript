@@ -6,7 +6,9 @@
         <div class="links">
             <router-link to="scoped">Css Scoped</router-link>
             <router-link to="product">Dynamic Requires</router-link>
+            {{#vuex}}
             <router-link to="todo">vuex</router-link>
+            {{/vuex}}
         </div>
     </div>
 </template>

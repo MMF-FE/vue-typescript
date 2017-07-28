@@ -22,9 +22,11 @@
     "normalize.css": "^7.0.0",
     "qs": "^6.5.0",
     "vue": "^2.3.4",
+    {{#vuex}}
+    "vuex": "^2.3.1",
+    {{/vuex}}
     "vue-router": "^2.7.0",
-    "vue-svgicon": "^1.2.0",
-    "vuex": "^2.3.1"
+    "vue-svgicon": "^1.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^3.0.3",
@@ -67,7 +69,9 @@
     "vue-property-decorator": "^5.1.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.4",
+    {{#vuex}}
     "vuex-class": "^0.2.0",
+    {{/vuex}}
     "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-middleware": "^1.11.0",

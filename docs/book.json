@@ -7,7 +7,7 @@
     ],
     "pluginsConfig": {
         "github": {
-            "url": "https://github.com/MMF-FE/vue-typescript/tree/develop"
+            "url": "https://github.com/MMF-FE/vue-typescript"
         }
     },
     "links": {
