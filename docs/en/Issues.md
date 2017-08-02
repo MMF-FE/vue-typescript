@@ -15,6 +15,10 @@ compiler.plugin('compilation', function (compilation) {
 Right now we comment this piece of code, so if anything is changed on html under build/tpl, you need to refresh manually.
 
 ### production mode does not extract styles into css file
-When build production, styles in components are not extracted into css files. Now there is no solution for that.
+When build production, if you use `require.ensure` to split code, styles in dynamic components are not extracted into css files. Now there is no solution for that.
+
+> You can set `allChunks: true` for `extract-text-webpack-plugin` in `build/webpack.prod.conf.js`, it will extract all styles into one css file. 
+
+> refs: https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/120
 
 >  If you have any solutions or ideas, please submit [issue](https://github.com/MMF-FE/vue-typescript/issues) or [PR](https://github.com/MMF-FE/vue-typescript/pulls)

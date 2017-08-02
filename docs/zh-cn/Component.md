@@ -65,7 +65,7 @@ export default class Hello extends Vue {
 export * from './hello.ts'
 ```
 
-为什么不直接将 hello.ts 命名为 index.ts 呢？这是因为考虑到编辑器打开文件的时候显示文件名的问题，不然显示 index.ts 你都不知道这个是哪个组件。如果你不想修改 cli 的组件模板。
+为什么不直接将 hello.ts 命名为 index.ts 呢？这是因为考虑到编辑器打开文件的时候显示文件名的问题，不然显示 index.ts 你都不知道这个是哪个组件。如果不想要 index.ts, 你可以修改 cli 的组件模板。
 
 ## 引入其他组件或模块
 引入其他组件或模块，默认以 src 目录开始查找的。

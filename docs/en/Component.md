@@ -60,15 +60,15 @@ export default class Hello extends Vue {
 Please go to chapter [Styling](./Style.md).
 
 ## index.ts
-This is component entry file, so that it will be easy to import other components.
+This is component entry file, so that it will be easy for other components to import this component.
 
 ```typescript
 export * from './hello.ts'
 ```
 
-The reason we don't name hello.ts as index.ts is considering editor is  always showing file name, thus you will never know which component it belongs to, unless you want to change cli compoent template.
+The reason we don't name hello.ts as index.ts is considering editor is  always showing file name, thus you will never know which component it belongs to. 
 
-## Import other components or templates
+## Import other components or modules
 Import root path is src by default.
 
 ```js
