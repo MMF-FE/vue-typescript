@@ -4,10 +4,10 @@
   "description": "{{ description }}",
   "main": "index.js",
   "scripts": {
-    "dev": "ENV=dev node build/dev-server.js",
-    "build:dev": "ENV=dev node build/build.js",
-    "build:sit": "ENV=sit node build/build.js",
-    "build:deploy": "ENV=deploy node build/build.js",
+    "dev": "cross-env ENV=dev node build/dev-server.js",
+    "build:dev": "cross-env ENV=dev node build/build.js",
+    "build:sit": "cross-env ENV=sit node build/build.js",
+    "build:deploy": "cross-env ENV=deploy node build/build.js",
     "svg": "vsvg -s ./src/assets/svg -t ./src/components/icons",
     "cli": "node ./tools/cli.js"
   },
@@ -37,6 +37,7 @@
     "colors": "^1.1.2",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.3",
     "css-loader": "^0.28.4",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.15.3",
