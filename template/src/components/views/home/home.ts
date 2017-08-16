@@ -16,5 +16,15 @@ export default class Home extends Vue {
         let res = await this.api.getPackage({})
         console.log(res.content)
     }
+
+    beforeRouteEnter (to, from, next) {
+        console.log('before home enter')
+        next()
+    }
+
+    beforeRouteLeave (to, from, next) {
+        console.log('before home leave')
+        next()
+    }
 }
 

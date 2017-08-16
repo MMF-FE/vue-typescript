@@ -2,12 +2,20 @@
 import 'vue-svgicon/dist/polyfill'
 {{/ie}}
 import Vue from 'vue'
-import App from 'components/pages/app'
+
+// register plugins hooks fo vue component
+import 'common/registerHooks'
+
+import * as svgicon from 'vue-svgicon'
+// import all icons
+import 'components/icons'
+
 import router from 'router'
-import svgicon = require('vue-svgicon')
 {{#vuex}}
 import store from 'store'
 {{/vuex}}
+
+import App from 'components/pages/app'
 
 // import all icons
 import 'components/icons'
@@ -23,4 +31,3 @@ new Vue({
     {{/vuex}}
     render: h => h(App)
 })
-
