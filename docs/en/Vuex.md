@@ -25,11 +25,24 @@ export namespace State {
 
 ```typescript
 import Vuex from 'vuex'
-import { State, Getter, Mutation, Action, namespace } from 'vuex-class'
 import keymirror from '../utils/keymirror'
 
-// Use vuexUtil methods to write getter, mutation 和 action
-import { getter, mutation, action, decorator } from '../utils/vuexUtil'
+import {
+    State as vState,
+    Getter as vGetter,
+    Mutation as vMutation,
+    Action as vAction,
+    namespace
+} from 'vuex-class'
+
+// Use vuexUtil methods to write getter, mutation and action
+import {
+    getter,
+    mutation,
+    action,
+    decorator
+} from '../utils/vuexUtil'
+
 
 /*** state ***/
 let state: TodoState = {}
@@ -66,19 +79,12 @@ export let types = {
     action: keymirror(actions)
 }
 
-export let module = {
-    State: namespace('todo', State),
-    Getter: namespace('todo', Getter),
-    Mutation: namespace('todo', Mutation),
-    Action: namespace('todo', Action)
-}
 
-export let Store = {
-    state: decorator(module.State, types.state),
-    getter: decorator(module.Getter, types.getter),
-    mutation: decorator(module.Mutation, types.mutation),
-    action: decorator(module.Action, types.action),
-}
+const storeName = 'todo'
+export let State = decorator(namespace(storeName, vState), types.state)
+export let Getter = decorator(namespace(storeName, vGetter), types.getter)
+export let Mutation = decorator(namespace(storeName, vMutation), types.mutation)
+export let Action = decorator(namespace(storeName, vAction), types.action)
 
 export default store
 ```
@@ -99,20 +105,23 @@ const store = new Vuex.Store({
 ### Use in components
 
 ```typescript
-import { Store } from 'store/modules/todo'
+import { State, Getter, Mutation, Action } from 'store/modules/todo'
 
 class Todo extends Vue {
-    @Store.state('todos') allTodos: Types.todo.Item[]
+    @State('todos')
+    allTodos: Types.todo.Item[]
     
-    // == @Store.state('foo') foo: string
-    @Store.state foo: string
+    // == @State('foo') foo: string
+    @State
+    foo: string
     
-    @Store.getter('filterTodos') todos: Types.todo.Item[]
+    @Getter('filterTodos')
+    todos: Types.todo.Item[]
 
-    @Store.mutation
+    @Mutation
     filterTodos: (filter: string) => void
 
-    @Store.action
+    @Action
     fetch: () => Promise<any>
 }
 ```
