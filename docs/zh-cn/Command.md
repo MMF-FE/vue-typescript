@@ -18,7 +18,8 @@ npm run svg
 ```
 
 ## 添加组件
-使用 **./tools/cli.js** 添加组件。
+使用 **./tools/cli.js** 添加组件。组件模板在 tools/tpl, 你可以根据需要修改模板文件。
+
 ```text
 选项：
   --version, -v  显示版本号                       [布尔]

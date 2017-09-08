@@ -21,8 +21,8 @@ import { Store } from 'store/modules/todo'
     }
 })
 export default class Footer extends Vue {
-    @Store.getter remaining: Types.todo.TodoItem[]
-    @Store.getter completed: Types.todo.TodoItem[]
+    @Store.getter remaining: Types.todo.Item[]
+    @Store.getter completed: Types.todo.Item[]
 
     @Store.mutation
     clearComplete: () => void

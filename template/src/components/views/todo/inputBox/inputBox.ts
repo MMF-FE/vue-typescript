@@ -18,12 +18,12 @@ import { Store } from 'store/modules/todo'
 export default class InputBox extends Vue {
     title = ''
 
-    @Store.state todos: Types.todo.TodoItem[]
+    @Store.state todos: Types.todo.Item[]
 
     @Store.getter isAllCompleted: boolean
 
     @Store.mutation
-    addTodo: (todo: Types.todo.TodoItem) => void
+    addTodo: (todo: Types.todo.Item) => void
 
     @Store.mutation('toggleAllTodoStatus')
     toggleAllStatus: (status: boolean) => void

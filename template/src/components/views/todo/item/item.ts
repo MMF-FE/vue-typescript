@@ -17,13 +17,13 @@ import { Store } from 'store/modules/todo'
 })
 export default class Item extends Vue {
     @Prop()
-    todo: Types.todo.TodoItem
+    todo: Types.todo.Item
 
     @Store.mutation('removeTodo')
-    remove: (todo: Types.todo.TodoItem) => void
+    remove: (todo: Types.todo.Item) => void
 
     @Store.mutation('toggleTodoStatus')
-    toggleStatus: (payload: { todo: Types.todo.TodoItem, status: boolean }) => void
+    toggleStatus: (payload: { todo: Types.todo.Item, status: boolean }) => void
 
     get status () {
         return this.todo.completed
