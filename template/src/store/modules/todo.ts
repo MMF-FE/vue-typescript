@@ -5,16 +5,12 @@
 import Vuex from 'vuex'
 import { State, Getter, Mutation, Action, namespace } from 'vuex-class'
 import keymirror from '../utils/keymirror'
-import { getter, mutation, action } from '../utils/vuexUtil'
-
-// type alias
-type TodoState = Types.State.TodoState
-type RootState = Types.State.RootState
+import { getter, mutation, action, decorator } from '../utils/vuexUtil'
 
 const STORE_KEY = 'vue-typescript-todos'
 
 /*** state ***/
-let state: TodoState = {
+let state = {
     filter: '',
     todos: []
 }
@@ -103,7 +99,7 @@ let actions = action(state, {
 })
 
 /*** module store ***/
-let store: Vuex.Module<TodoState, RootState> = {
+let store = {
     namespaced: true,
     state: state,
     getters: getters,
@@ -124,6 +120,13 @@ export let module = {
     Getter: namespace('todo', Getter),
     Mutation: namespace('todo', Mutation),
     Action: namespace('todo', Action)
+}
+
+export let Store = {
+    state: decorator(module.State, types.state),
+    getter: decorator(module.Getter, types.getter),
+    mutation: decorator(module.Mutation, types.mutation),
+    action: decorator(module.Action, types.action),
 }
 
 export default store

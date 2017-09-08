@@ -9,7 +9,7 @@ import Vue from 'components/base'
 import { Component, Prop } from 'vue-property-decorator'
 import template from './item.vue'
 
-import { types, module } from 'store/modules/todo'
+import { Store } from 'store/modules/todo'
 
 @Component({
     name: 'tag-todo-item',
@@ -18,6 +18,12 @@ import { types, module } from 'store/modules/todo'
 export default class Item extends Vue {
     @Prop()
     todo: Types.todo.TodoItem
+
+    @Store.mutation('removeTodo')
+    remove: (todo: Types.todo.TodoItem) => void
+
+    @Store.mutation('toggleTodoStatus')
+    toggleStatus: (payload: { todo: Types.todo.TodoItem, status: boolean }) => void
 
     get status () {
         return this.todo.completed
@@ -29,7 +35,4 @@ export default class Item extends Vue {
             status: value
         })
     }
-
-    @module.Mutation(types.mutation.removeTodo) remove
-    @module.Mutation(types.mutation.toggleTodoStatus) toggleStatus
 }

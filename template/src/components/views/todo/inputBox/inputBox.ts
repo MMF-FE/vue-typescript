@@ -9,7 +9,7 @@ import Vue from 'components/base'
 import { Component } from 'vue-property-decorator'
 import template from './inputBox.vue'
 
-import { types, module } from 'store/modules/todo'
+import { Store } from 'store/modules/todo'
 
 @Component({
     name: 'tag-todo-inputbox',
@@ -18,12 +18,15 @@ import { types, module } from 'store/modules/todo'
 export default class InputBox extends Vue {
     title = ''
 
-    @module.State(types.state.todos) todos
+    @Store.state todos: Types.todo.TodoItem[]
 
-    @module.Getter(types.getter.isAllCompleted) isAllCompleted
+    @Store.getter isAllCompleted: boolean
 
-    @module.Mutation(types.mutation.addTodo) addTodo
-    @module.Mutation(types.mutation.toggleAllTodoStatus) toggleAllStatus
+    @Store.mutation
+    addTodo: (todo: Types.todo.TodoItem) => void
+
+    @Store.mutation('toggleAllTodoStatus')
+    toggleAllStatus: (status: boolean) => void
 
     onEnter () {
         this.addTodo({

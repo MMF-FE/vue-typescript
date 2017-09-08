@@ -6,9 +6,6 @@
  -->
 <template>
     <div class="filters">
-        <!-- <button class="cur">All</button>
-        <button>Active</button>
-        <button>Completed</button> -->
         <router-link to="/todo/all" active-class="cur">All</router-link>
         <router-link to="/todo/active" active-class="cur">Active</router-link>
         <router-link to="/todo/completed" active-class="cur">Completed</router-link>
