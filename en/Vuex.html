@@ -1,0 +1,453 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Vuex · vue-typescript</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Test.html" />
+    
+    
+    <link rel="prev" href="Style.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Structure.html">
+            
+                <a href="Structure.html">
+            
+                    
+                    Project Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Command.html">
+            
+                <a href="Command.html">
+            
+                    
+                    Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Types.html">
+            
+                <a href="Types.html">
+            
+                    
+                    Type Definition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Component.html">
+            
+                <a href="Component.html">
+            
+                    
+                    Component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Api.html">
+            
+                <a href="Api.html">
+            
+                    
+                    Use Back End Api
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Style.html">
+            
+                <a href="Style.html">
+            
+                    
+                    Styling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="Vuex.html">
+            
+                <a href="Vuex.html">
+            
+                    
+                    Vuex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="Test.html">
+            
+                <a href="Test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="Issues.html">
+            
+                <a href="Issues.html">
+            
+                    
+                    Issues
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Vuex</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vuex">Vuex</h1>
+<p>By using vue-cli start a project with Vuex, will generate a todo list example by using Vuex <a href="https://github.com/MMF-FE/vue-typescript/blob/master/template/src/components/views/todo/todo.ts" target="_blank">todo example</a>.</p>
+<h2 id="use-vuex">Use vuex</h2>
+<p>Template use <a href="https://github.com/ktsn/vuex-class" target="_blank">vuex-class</a> to simplify vuex. Before use vuex, please read <a href="https://vuex.vuejs.org/" target="_blank">vuex</a> for more information.</p>
+<h3 id="define-root-state">Define root state</h3>
+<p>The first step to use vuex is defining root state.</p>
+<pre><code class="lang-typescript"><span class="hljs-comment">// typings/interface/state.d.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">namespace</span> State {
+
+    <span class="hljs-comment">// root state</span>
+    <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> RootState {
+        [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>
+    }
+}
+</code></pre>
+<h3 id="write-vuex-module">Write vuex module</h3>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> Vuex from <span class="hljs-string">&apos;vuex&apos;</span>
+<span class="hljs-keyword">import</span> keymirror from <span class="hljs-string">&apos;../utils/keymirror&apos;</span>
+
+<span class="hljs-keyword">import</span> {
+    State as vState,
+    Getter as vGetter,
+    Mutation as vMutation,
+    Action as vAction,
+    <span class="hljs-keyword">namespace</span>
+} from <span class="hljs-string">&apos;vuex-class&apos;</span>
+
+<span class="hljs-comment">// Use vuexUtil methods to write getter, mutation and action</span>
+<span class="hljs-keyword">import</span> {
+    getter,
+    mutation,
+    action,
+    decorator
+} from <span class="hljs-string">&apos;../utils/vuexUtil&apos;</span>
+
+
+<span class="hljs-comment">/*** state ***/</span>
+<span class="hljs-keyword">let</span> state: TodoState = {}
+
+<span class="hljs-comment">/*** getters ***/</span>
+<span class="hljs-keyword">let</span> getters = getter(state, {
+    <span class="hljs-comment">// getters</span>
+})
+
+<span class="hljs-comment">/*** mutations ***/</span>
+<span class="hljs-keyword">let</span> mutations = mutation(state, {
+    <span class="hljs-comment">// mutations</span>
+})
+
+<span class="hljs-comment">/*** actions ***/</span>
+<span class="hljs-keyword">let</span> actions = action(state, {
+    <span class="hljs-comment">// actions</span>
+})
+
+<span class="hljs-comment">/*** module store ***/</span>
+<span class="hljs-keyword">let</span> store: Vuex.Module&lt;TodoState, RootState&gt; = {
+    namespaced: <span class="hljs-literal">true</span>,
+    state: state,
+    getters: getters,
+    mutations: mutations,
+    actions: actions
+}
+
+<span class="hljs-comment">/*** exports ***/</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> types = {
+    state: keymirror(state),
+    getter: keymirror(getters),
+    mutation: keymirror(mutations),
+    action: keymirror(actions)
+}
+
+
+<span class="hljs-keyword">const</span> storeName = <span class="hljs-string">&apos;todo&apos;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> State = decorator(<span class="hljs-keyword">namespace</span>(storeName, vState), types.state)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> Getter = decorator(<span class="hljs-keyword">namespace</span>(storeName, vGetter), types.getter)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> Mutation = decorator(<span class="hljs-keyword">namespace</span>(storeName, vMutation), types.mutation)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> Action = decorator(<span class="hljs-keyword">namespace</span>(storeName, vAction), types.action)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store
+</code></pre>
+<h3 id="add-module-into-main-store">Add module into main store</h3>
+<pre><code class="lang-typescript"><span class="hljs-comment">// import modules</span>
+<span class="hljs-keyword">import</span> todo from <span class="hljs-string">&apos;./modules/todo&apos;</span>
+
+<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store({
+    modules: {
+        todo
+    }
+})
+</code></pre>
+<h3 id="use-in-components">Use in components</h3>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { State, Getter, Mutation, Action } from <span class="hljs-string">&apos;store/modules/todo&apos;</span>
+
+<span class="hljs-keyword">class</span> Todo extends Vue {
+    @State(<span class="hljs-string">&apos;todos&apos;</span>)
+    allTodos: Types.todo.Item[]
+
+    <span class="hljs-comment">// == @State(&apos;foo&apos;) foo: string</span>
+    @State
+    foo: <span class="hljs-built_in">string</span>
+
+    @Getter(<span class="hljs-string">&apos;filterTodos&apos;</span>)
+    todos: Types.todo.Item[]
+
+    @Mutation
+    filterTodos: (filter: <span class="hljs-built_in">string</span>) =&gt; <span class="hljs-built_in">void</span>
+
+    @Action
+    fetch: () =&gt; Promise&lt;<span class="hljs-built_in">any</span>&gt;
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Style.html" class="navigation navigation-prev " aria-label="Previous page: Styling">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Test.html" class="navigation navigation-next " aria-label="Next page: Test">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Vuex","level":"1.8","depth":1,"next":{"title":"Test","level":"1.9","depth":1,"path":"Test.md","ref":"Test.md","articles":[]},"previous":{"title":"Styling","level":"1.7","depth":1,"path":"Style.md","ref":"Style.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-fontsettings","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/MMF-FE/vue-typescript"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-typescript","language":"en","links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":"*"},"file":{"path":"Vuex.md","mtime":"2017-09-08T08:11:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T08:13:53.052Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

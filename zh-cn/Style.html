@@ -1,0 +1,401 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>样式 · vue-typescript</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Vuex.html" />
+    
+    
+    <link rel="prev" href="Api.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Structure.html">
+            
+                <a href="Structure.html">
+            
+                    
+                    项目结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Command.html">
+            
+                <a href="Command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Types.html">
+            
+                <a href="Types.html">
+            
+                    
+                    类型定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Component.html">
+            
+                <a href="Component.html">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Api.html">
+            
+                <a href="Api.html">
+            
+                    
+                    使用后端接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="Style.html">
+            
+                <a href="Style.html">
+            
+                    
+                    样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Vuex.html">
+            
+                <a href="Vuex.html">
+            
+                    
+                    Vuex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="Test.html">
+            
+                <a href="Test.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="Issues.html">
+            
+                <a href="Issues.html">
+            
+                    
+                    存在的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >样式</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6837;&#x5F0F;">&#x6837;&#x5F0F;</h1>
+<p>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; sass(scss), &#x5728; build/utils.js &#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-js">scss: generateLoaders(<span class="hljs-string">&apos;sass&apos;</span>, {
+    includePaths: [
+        path.join(__dirname, <span class="hljs-string">&apos;../src/style&apos;</span>),
+        path.join(__dirname, <span class="hljs-string">&apos;../node_modules&apos;</span>)
+    ]
+})
+</code></pre>
+<p>import sass &#x9ED8;&#x8BA4;&#x662F;&#x4ECE; src/style &#x76EE;&#x5F55;&#x6216; node_modules &#x5F00;&#x59CB;&#x7684;, &#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x4F60;&#x7EC4;&#x4EF6;&#x76EE;&#x5F55;&#x5C42;&#x6B21;&#x591A;&#x6DF1;&#xFF0C;&#x5F15;&#x5165;&#x6837;&#x5F0F;&#x90FD;&#x5F88;&#x65B9;&#x4FBF;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x662F;&#x5F15;&#x5165; node_modules &#x91CC;&#x9762;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x9700;&#x8981;&#x52A0;&#x4E0A; <strong>~</strong></p>
+</blockquote>
+<pre><code class="lang-scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;base/base&quot;</span>; <span class="hljs-comment">// &#x5F15;&#x5165; src/style/base/_base.scss</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;~normalize.css&quot;</span>; <span class="hljs-comment">// &#x5F15;&#x5165; node_modules/normalize.css</span>
+</code></pre>
+<h2 id="basescss">base.scss</h2>
+<p>src/style/base/_base.scss &#x53EA;&#x80FD;&#x5F15;&#x5165;&#x4E0D;&#x80FD;&#x751F;&#x6210;&#x4EE3;&#x7801;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x6BD4;&#x5982; &#x53D8;&#x91CF;&#x3001;mixins &#x7B49;&#x3002; </p>
+<h2 id="&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#xFF08;assets&#xFF09;">&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#xFF08;assets&#xFF09;</h2>
+<p>sass &#x4E2D;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#xFF08;assets&#xFF09;&#x4F7F;&#x7528; <a href="https://github.com/borodean/postcss-assets" target="_blank">postcss-assets</a> &#x63D0;&#x4F9B;&#x7684; reslove &#x65B9;&#x6CD5;&#x3002;&#x9ED8;&#x8BA4;&#x7684;&#x8D44;&#x6E90;&#x6839;&#x8DEF;&#x5F84;&#x662F; src/assets/images&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4FEE;&#x6539; .postcssrc.js &#x6587;&#x4EF6;&#x6765;&#x4FEE;&#x6539;&#x6216;&#x6DFB;&#x52A0;&#x8DEF;&#x5F84;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// .postcssrc.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-string">&quot;plugins&quot;</span>: {
+        <span class="hljs-comment">// to edit target browsers: use &quot;browserlist&quot; field in package.json</span>
+        <span class="hljs-comment">// &#x6D4F;&#x89C8;&#x5668;&#x914D;&#x7F6E;&#x5728; package.json &#x90A3;&#x91CC;&#x7F16;&#x8F91;</span>
+        <span class="hljs-string">&quot;autoprefixer&quot;</span>: {},
+        <span class="hljs-string">&quot;postcss-assets&quot;</span>: {
+            relative: <span class="hljs-literal">true</span>,
+            loadPaths: [<span class="hljs-string">&apos;./src/assets/images&apos;</span>]
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-scss"><span class="hljs-selector-class">.logo</span> {
+    <span class="hljs-comment">// url(&quot;src/assets/images/logo.png&quot;)</span>
+    <span class="hljs-comment">// &#x9875;&#x9762;&#x663E;&#x793A;&#x7684;&#x5730;&#x5740;&#x4F1A;&#x88AB; webpack &#x5904;&#x7406;&#x8FC7;</span>
+    <span class="hljs-attribute">background-image</span>: resolve(<span class="hljs-string">&quot;logo.png&quot;</span>);
+}
+</code></pre>
+<h2 id="scoped-css">scoped css</h2>
+<p>&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9ED8;&#x8BA4;&#x6837;&#x5F0F;&#x5F00;&#x542F; css scoped&#x3002;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./home.scss&quot;</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<p>css scoped &#x7684;&#x597D;&#x5904;&#x662F;&#x7EC4;&#x4EF6;&#x6837;&#x5F0F;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x6216;&#x5168;&#x5C40;&#x6837;&#x5F0F;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;(&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x4E5F;&#x662F; scoped &#x7684;)&#x5F71;&#x54CD;&#xFF0C;&#x53C8;&#x4E0D;&#x50CF; css module &#x90A3;&#x6837;&#x9700;&#x8981;&#x4FEE;&#x6539; html &#x6A21;&#x677F;&#x4EE3;&#x7801;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x8986;&#x76D6;&#x5B50;&#x7EC4;&#x4EF6;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong> /deep/ </strong>&#x3002;&#x5177;&#x4F53;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://github.com/MMF-FE/vue-typescript/blob/master/template/src/components/views/scoped/scoped.scss" target="_blank">scoped example</a>&#x3002;</p>
+<pre><code class="lang-scss">.parent {
+    color: red;
+
+    /deep/ {
+        .child {
+            color: green;
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528; sass, &#x53EF;&#x4EE5;&#x7528; <strong>&gt;&gt;&gt;</strong> &#x4EE3;&#x66FF; <strong>/deep/</strong>
+&#x7531;&#x4E8E;&#x4F7F;&#x7528; scoped css, &#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5D4C;&#x5957;&#x592A;&#x591A;&#x5C42;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5D4C;&#x5957;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Api.html" class="navigation navigation-prev " aria-label="Previous page: 使用后端接口">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Vuex.html" class="navigation navigation-next " aria-label="Next page: Vuex">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"样式","level":"1.7","depth":1,"next":{"title":"Vuex","level":"1.8","depth":1,"path":"Vuex.md","ref":"Vuex.md","articles":[]},"previous":{"title":"使用后端接口","level":"1.6","depth":1,"path":"Api.md","ref":"Api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-fontsettings","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/MMF-FE/vue-typescript"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-typescript","language":"zh-cn","links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":"*"},"file":{"path":"Style.md","mtime":"2017-09-08T06:59:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T08:13:53.052Z"},"basePath":".","book":{"language":"zh-cn"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

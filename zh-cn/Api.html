@@ -1,0 +1,377 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>使用后端接口 · vue-typescript</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Style.html" />
+    
+    
+    <link rel="prev" href="Component.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Structure.html">
+            
+                <a href="Structure.html">
+            
+                    
+                    项目结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Command.html">
+            
+                <a href="Command.html">
+            
+                    
+                    命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Types.html">
+            
+                <a href="Types.html">
+            
+                    
+                    类型定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Component.html">
+            
+                <a href="Component.html">
+            
+                    
+                    组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="Api.html">
+            
+                <a href="Api.html">
+            
+                    
+                    使用后端接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Style.html">
+            
+                <a href="Style.html">
+            
+                    
+                    样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Vuex.html">
+            
+                <a href="Vuex.html">
+            
+                    
+                    Vuex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="Test.html">
+            
+                <a href="Test.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="Issues.html">
+            
+                <a href="Issues.html">
+            
+                    
+                    存在的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >使用后端接口</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4F7F;&#x7528;&#x540E;&#x7AEF;&#x63A5;&#x53E3;">&#x4F7F;&#x7528;&#x540E;&#x7AEF;&#x63A5;&#x53E3;</h1>
+<p>&#x4F7F;&#x7528; <a href="https://github.com/mzabriskie/axios" target="_blank">axios</a> &#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684; http client</p>
+<h2 id="httpts">http.ts</h2>
+<p><strong>src/api/http.ts</strong> &#x5BF9; axios &#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x5C01;&#x88C5;&#x4E86; get, post &#x65B9;&#x6CD5;&#xFF0C;&#x9700;&#x8981;&#x5176;&#x4ED6; http &#x8BF7;&#x6C42; method &#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5C01;&#x88C5;&#x3002;</p>
+<h3 id="get">get</h3>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">url, data?: Types.PlainObject</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+}
+</code></pre>
+<p><strong>T</strong> &#x662F;&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;</p>
+<pre><code class="lang-typescript"><span class="hljs-comment">// &#x8FD9;&#x91CC; /list &#x7684;&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x662F; {status: number,list: any[]}</span>
+{
+    getList (params: <span class="hljs-built_in">any</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">get</span>&lt;{
+            status: <span class="hljs-built_in">number</span>
+            list: <span class="hljs-built_in">any</span>[]
+        }&gt;(<span class="hljs-string">&apos;/list&apos;</span>, params)
+    }
+}
+</code></pre>
+<h3 id="post">post</h3>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">post</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">url, data?: Types.PlainObject</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+}
+</code></pre>
+<h2 id="indexts">index.ts</h2>
+<p><strong>src/api/index.ts</strong> &#x662F;&#x540E;&#x7AEF;&#x63A5;&#x53E3;&#x914D;&#x7F6E;&#x3002;&#x53EF;&#x4EE5;&#x5C06;&#x4E0D;&#x540C;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#x62C6;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="&#x5728;&#x7EC4;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;-api">&#x5728;&#x7EC4;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528; Api</h2>
+<p>&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x9ED8;&#x8BA4;&#x90FD;&#x6709; <strong>api</strong> &#x8FD9;&#x4E2A;&#x6210;&#x5458;&#xFF0C;<strong>api</strong> &#x5C31;&#x662F;&#x6765;&#x81EA; src/api/index.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">class</span> Home extends Vue {
+    async created () {
+        <span class="hljs-comment">// api example</span>
+        <span class="hljs-keyword">let</span> res = await <span class="hljs-keyword">this</span>.api.getList({})
+        <span class="hljs-built_in">console</span>.log(res.list)
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Component.html" class="navigation navigation-prev " aria-label="Previous page: 组件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Style.html" class="navigation navigation-next " aria-label="Next page: 样式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"使用后端接口","level":"1.6","depth":1,"next":{"title":"样式","level":"1.7","depth":1,"path":"Style.md","ref":"Style.md","articles":[]},"previous":{"title":"组件","level":"1.5","depth":1,"path":"Component.md","ref":"Component.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-fontsettings","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/MMF-FE/vue-typescript"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-typescript","language":"zh-cn","links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":"*"},"file":{"path":"Api.md","mtime":"2017-09-08T06:59:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T08:13:53.052Z"},"basePath":".","book":{"language":"zh-cn"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
