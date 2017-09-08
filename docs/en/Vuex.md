@@ -6,9 +6,9 @@ By using vue-cli start a project with Vuex, will generate a todo list example by
 
 Template use [vuex-class](https://github.com/ktsn/vuex-class) to simplify vuex. Before use vuex, please read [vuex](https://vuex.vuejs.org/) for more information.
 
-### Define state
+### Define root state
 
-The first step to use vuex is defining state.
+The first step to use vuex is defining root state.
 
 ```typescript
 // typings/interface/state.d.ts
@@ -18,12 +18,6 @@ export namespace State {
     export interface RootState {
         [key: string]: any
     }
-
-    // todo state
-    export interface TodoState {
-        filter: string
-        todos: Types.todo.TodoItem[]
-    }
 }
 ```
 
@@ -31,11 +25,24 @@ export namespace State {
 
 ```typescript
 import Vuex from 'vuex'
-import { State, Getter, Mutation, Action, namespace } from 'vuex-class'
 import keymirror from '../utils/keymirror'
 
-// Use vuexUtil methods to write getter, mutation 和 action
-import { getter, mutation, action } from '../utils/vuexUtil'
+import {
+    State as vState,
+    Getter as vGetter,
+    Mutation as vMutation,
+    Action as vAction,
+    namespace
+} from 'vuex-class'
+
+// Use vuexUtil methods to write getter, mutation and action
+import {
+    getter,
+    mutation,
+    action,
+    decorator
+} from '../utils/vuexUtil'
+
 
 /*** state ***/
 let state: TodoState = {}
@@ -72,12 +79,12 @@ export let types = {
     action: keymirror(actions)
 }
 
-export let module = {
-    State: namespace('todo', State),
-    Getter: namespace('todo', Getter),
-    Mutation: namespace('todo', Mutation),
-    Action: namespace('todo', Action)
-}
+
+const storeName = 'todo'
+export let State = decorator(namespace(storeName, vState), types.state)
+export let Getter = decorator(namespace(storeName, vGetter), types.getter)
+export let Mutation = decorator(namespace(storeName, vMutation), types.mutation)
+export let Action = decorator(namespace(storeName, vAction), types.action)
 
 export default store
 ```
@@ -98,17 +105,24 @@ const store = new Vuex.Store({
 ### Use in components
 
 ```typescript
-// vuex
-import { types, module } from 'store/modules/todo'
+import { State, Getter, Mutation, Action } from 'store/modules/todo'
 
 class Todo extends Vue {
-    @module.State(types.state.todos) allTodos
+    @State('todos')
+    allTodos: Types.todo.Item[]
+    
+    // == @State('foo') foo: string
+    @State
+    foo: string
+    
+    @Getter('filterTodos')
+    todos: Types.todo.Item[]
 
-    @module.Getter(types.getter.filterTodos) todos
+    @Mutation
+    filterTodos: (filter: string) => void
 
-    @module.Mutation(types.mutation.setFilter) setFilter
-
-    @module.Action(types.action.fetch) fetch
+    @Action
+    fetch: () => Promise<any>
 }
 ```
 

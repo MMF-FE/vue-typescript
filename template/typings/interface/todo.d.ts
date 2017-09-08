@@ -5,7 +5,7 @@
 export namespace todo {
 
     // todo item
-    export interface TodoItem {
+    export interface Item {
         title: string
         completed: boolean
     }

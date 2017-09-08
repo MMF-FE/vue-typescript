@@ -11,7 +11,7 @@ import template from './footer.vue'
 
 import Filters from '../filter'
 
-import { types, module} from 'store/modules/todo'
+import { Getter, Mutation } from 'store/modules/todo'
 
 @Component({
     name: 'tag-todo-footer',
@@ -21,8 +21,12 @@ import { types, module} from 'store/modules/todo'
     }
 })
 export default class Footer extends Vue {
-    @module.Getter(types.getter.remaining) remaining: Types.todo.TodoItem[]
-    @module.Getter(types.getter.completed) completed: Types.todo.TodoItem[]
+    @Getter
+    remaining: Types.todo.Item[]
 
-    @module.Mutation(types.mutation.clearComplete) clearComplete
+    @Getter
+    completed: Types.todo.Item[]
+
+    @Mutation
+    clearComplete: () => void
 }
