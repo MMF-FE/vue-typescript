@@ -20,7 +20,6 @@ import {
     decorator
 } from '../utils/vuexUtil'
 
-const storeName = 'todo'
 const STORE_KEY = 'vue-typescript-todos'
 
 /*** state ***/
@@ -129,6 +128,7 @@ export let types = {
     action: keymirror(actions)
 }
 
+const storeName = 'todo'
 export let State = decorator(namespace(storeName, vState), types.state)
 export let Getter = decorator(namespace(storeName, vGetter), types.getter)
 export let Mutation = decorator(namespace(storeName, vMutation), types.mutation)
