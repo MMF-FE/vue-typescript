@@ -4,7 +4,7 @@
 
 import Router from 'vue-router'
 
-function getView (name) {
+function getView (name): any {
     return (resolve, reject) => {
         require.ensure([], (require) => {
             resolve(require(`components/views/product/${name}/index.ts`))

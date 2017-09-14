@@ -4,7 +4,7 @@
 
 import Router from 'vue-router'
 
-function getView (viewName) {
+function getView (viewName): any {
     return (resolve, reject) => {
         require.ensure([], (require) => {
             let map = {
