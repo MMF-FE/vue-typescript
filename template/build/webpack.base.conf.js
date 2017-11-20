@@ -72,10 +72,5 @@ module.exports = {
                 }
             }
         ]
-    },
-
-    plugins: [
-        // 作用域提升，减少代码量，加快代码运行速度（webpack 3.0）
-        new webpack.optimize.ModuleConcatenationPlugin()
-    ]
+    }
 }
