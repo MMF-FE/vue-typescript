@@ -17,8 +17,6 @@ import store from 'store'
 
 import App from 'components/pages/app'
 
-// import all icons
-import 'components/icons'
 Vue.use(svgicon, {
     tagName: 'icon'
 })
