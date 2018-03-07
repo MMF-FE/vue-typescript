@@ -2,16 +2,17 @@
  * For module import or split code use require
  */
 interface NodeRequire {
-    ensure(paths: string[], callback: (require) => void, chunkName?: string): void
-    ensure(paths: string[], callback: (require) => void, errorCallback?: (err) => void, chunkName?: string): void
-}
-
-/**
- * md5
- */
-declare module 'md5' {
-    const md5: (str: string) => string
-    export = md5
+    ensure(
+        paths: string[],
+        callback: (require) => void,
+        chunkName?: string
+    ): void
+    ensure(
+        paths: string[],
+        callback: (require) => void,
+        errorCallback?: (err) => void,
+        chunkName?: string
+    ): void
 }
 
 declare module 'env' {

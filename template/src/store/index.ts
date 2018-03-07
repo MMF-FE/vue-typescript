@@ -8,7 +8,6 @@ import { mutation } from './utils/vuexUtil'
 import keymirror from './utils/keymirror'
 
 // import modules
-import todo from './modules/todo'
 
 Vue.use(Vuex)
 
@@ -27,9 +26,7 @@ const store = new Vuex.Store({
 
     actions: {},
 
-    modules: {
-        todo
-    }
+    modules: {}
 })
 
 export let types = {

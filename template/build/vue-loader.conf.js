@@ -5,7 +5,9 @@ var isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
     esModule: true,
     cssModules: {
-        localIdentName: isProduction ? '[hash:base64:6]' : '[local]--[hash:base64:5]',
+        localIdentName: isProduction
+            ? '[hash:base64:6]'
+            : '[local]--[hash:base64:5]',
         camelCase: true
     },
     loaders: utils.cssLoaders({

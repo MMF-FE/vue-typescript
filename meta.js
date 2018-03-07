@@ -36,8 +36,7 @@ module.exports = {
   "filters": {
     "src/components/views/todo/**/*": "vuex",
     "src/store/**/*": "vuex",
-    "typings/interface/todo.d.ts": "vuex",
     "typings/interface/state.d.ts": "vuex"
   },
-  "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev.{{/inPlace}}"
+  "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn\n  yarn dll\n  npm run dev.{{/inPlace}}"
 }

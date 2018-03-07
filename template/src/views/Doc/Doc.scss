@@ -1,0 +1,274 @@
+/**
+ * Doc
+ */
+@import "base/base";
+
+$sidebar-bg: #2A374B;
+
+.doc {
+    display: grid;
+    height: 100vh;
+    color: #444;
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: 1fr;
+    // stylelint-disable
+    grid-template-areas: "sidebar main";
+    // stylelint-enable
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    background: #FFF;
+    grid-area: header;
+    box-shadow: 0 2px 4px -4px rgba(#000, 0.5);
+    align-items: center;
+
+    h1 {
+        padding: 0 10px;
+        font-size: 16px;
+    }
+}
+
+.logo {
+    display: flex;
+    height: 52px;
+    background-color: shade($sidebar-bg, 50%);
+    justify-content: center;
+    align-items: center;
+
+    span {
+        position: relative;
+        left: 5px;
+        top: 6px;
+        font-size: 12px;
+    }
+}
+
+.sidebar {
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background: $sidebar-bg;
+    color: #FFF;
+    font-size: 12px;
+    grid-area: sidebar;
+    overflow: auto;
+
+    h1 {
+        height: 52px;
+        line-height: 52px;
+        background-color: shade($sidebar-bg, 50%);
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+.menu > li,
+.submenu > li {
+    user-select: none;
+
+    span {
+        display: block;
+        width: 100%;
+        line-height: 40px;
+        text-indent: 12px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: shade($sidebar-bg, 25%);
+        }
+    }
+
+    &.is-active:not(.has-submenu) {
+        > span {
+            position: relative;
+            background-color: $color-primary;
+
+            &::before {
+                position: absolute;
+                top: calc(50% - 6px);
+                right: -8px;
+                width: 14px;
+                height: 14px;
+                // stylelint-disable
+                background: linear-gradient(45deg, #FFF 51%, transparent 0)
+                    transparent;
+                // stylelint-enable
+                content: "";
+                transform: rotate(45deg);
+                pointer-events: none;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+.submenu {
+    display: none;
+}
+
+.menu > li {
+    &.has-submenu {
+        > span {
+            line-height: 30px;
+            background-color: shade($sidebar-bg, 50%);
+            color: shade(#FFF, 20%);
+            font-size: 12px;
+            cursor: default;
+        }
+    }
+
+    &.is-active {
+        .submenu {
+            display: block;
+        }
+    }
+}
+
+.main {
+    padding-bottom: 10px;
+    background: #FFF;
+    overflow: auto;
+}
+
+.markdown {
+    line-height: 2em;
+    padding: 12px;
+    font-size: 13px;
+
+    /deep/ {
+        code {
+            display: inline-block;
+            height: 18px;
+            line-height: 18px;
+            padding: 1px 5px;
+            margin: 0 4px;
+            border-radius: 3px;
+            background-color: #E6EFFB;
+        }
+
+        pre {
+            padding: 1.2em;
+            margin: 1em 0;
+            border-radius: 3px;
+            background: #F3F5F6;
+
+            code {
+                background: transparent;
+            }
+        }
+
+        strong {
+            font-weight: $font-bold;
+            font-family: Helvetica, Arial;
+        }
+
+        .table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            code {
+                padding: 0.2em 0.5em;
+                margin: 0;
+                border-radius: 3px;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-size: 85%;
+            }
+
+            tr:nth-child(2n) {
+                background-color: #F6F8FA;
+            }
+        }
+
+        tr {
+            border-top: 1px solid #C6CBD1;
+            background-color: #FFF;
+        }
+
+        th,
+        td {
+            padding: 6px 13px;
+            border: 1px solid #DFE2E5;
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 1.2em 0;
+            font-weight: bold;
+        }
+
+        h1,
+        h2 {
+            padding-bottom: 0.5em;
+            border-bottom: 1px solid #DCDCDC;
+        }
+
+        blockquote {
+            padding: 0 1em;
+            margin: 1em 0;
+            border-left: 0.25em solid #DFE2E5;
+            background: tint(#DFE2E5, 80%);
+            color: #6A737D;
+        }
+
+        ul,
+        ol {
+            padding-left: 2em;
+            list-style: initial;
+        }
+
+        li {
+            list-style: initial;
+        }
+
+        a {
+            color: $color-primary;
+        }
+
+        .rule-a,
+        .rule-b,
+        .rule-c,
+        .rule-d {
+            color: red;
+            font-size: 12px;
+        }
+
+        // 规范优先级 A：必要
+        .rule-a {
+            &::before {
+                content: "必要";
+            }
+        }
+
+        // 规范优先级 B：强烈推荐
+        .rule-b {
+            &::before {
+                content: "强烈推荐";
+            }
+        }
+
+        // 规范优先级 C：推荐
+        .rule-c {
+            &::before {
+                content: "推荐";
+            }
+        }
+
+        // 规范优先级 D：谨慎使用
+        .rule-d {
+            &::before {
+                content: "谨慎使用";
+            }
+        }
+    }
+}

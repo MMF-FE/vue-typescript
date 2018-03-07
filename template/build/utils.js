@@ -1,15 +1,19 @@
+require('shelljs/global')
+
 var path = require('path')
 var config = require('./config')
+var cheerio = require('cheerio')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-exports.assetsPath = function (_path) {
-    var assetsSubDirectory = process.env.NODE_ENV === 'production'
-        ? config.build.assetsSubDirectory
-        : config.dev.assetsSubDirectory
+exports.assetsPath = function(_path) {
+    var assetsSubDirectory =
+        process.env.NODE_ENV === 'production'
+            ? config.build.assetsSubDirectory
+            : config.dev.assetsSubDirectory
     return path.posix.join(assetsSubDirectory, _path)
 }
 
-exports.cssLoaders = function (options) {
+exports.cssLoaders = function(options) {
     options = options || {}
 
     var cssLoader = {
@@ -55,14 +59,14 @@ exports.cssLoaders = function (options) {
                 path.join(__dirname, '../src/style'),
                 path.join(__dirname, '../node_modules')
             ]
-        }),
+        })
         // stylus: generateLoaders('stylus'),
         // styl: generateLoaders('stylus')
     }
 }
 
 // Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
+exports.styleLoaders = function(options) {
     var output = []
     var loaders = exports.cssLoaders(options)
     for (var extension in loaders) {
@@ -74,4 +78,36 @@ exports.styleLoaders = function (options) {
     }
 
     return output
+}
+
+exports.getDllNames = function() {
+    let map = {}
+    ls(path.join(config.build.assetsRoot, '*.dll.*.js')).forEach(file => {
+        let info = path.parse(file)
+        map[
+            String(info.name)
+                .split('.dll.')
+                .shift() + '.dll'
+        ] =
+            info.base
+    })
+
+    return map
+}
+
+// 去掉 html 标签
+exports.strip = function(html, tags) {
+    var $ = cheerio.load(html, { decodeEntities: false })
+    if (!tags || tags.length === 0) {
+        return html
+    }
+
+    tags = !Array.isArray(tags) ? [tags] : tags
+    var len = tags.length
+
+    while (len--) {
+        $(tags[len]).remove()
+    }
+
+    return $('body').html()
 }

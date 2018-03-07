@@ -5,13 +5,17 @@ if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
+const isDoc = process.env.ENV === 'doc'
+
 var opn = require('opn')
 var portfinder = require('portfinder')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = require('./webpack.dev.conf')
+var webpackConfig = isDoc
+    ? require('./webpack.doc.conf')
+    : require('./webpack.dev.conf')
 
 // automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
@@ -28,7 +32,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => { }
+    log: () => {}
 })
 // force page reload when html-webpack-plugin template changes
 // compiler.plugin('compilation', function (compilation) {
@@ -39,7 +43,7 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // })
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
+Object.keys(proxyTable).forEach(function(context) {
     var options = proxyTable[context]
     if (typeof options === 'string') {
         options = { target: options }
@@ -58,8 +62,12 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
-var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+var staticPath = path.posix.join(
+    config.dev.assetsPublicPath,
+    config.dev.assetsSubDirectory
+)
 app.use(staticPath, express.static('./static'))
+app.use(express.static(path.join(__dirname, '../dist')))
 
 // default port where dev server listens for incoming traffic
 portfinder.basePort = process.env.PORT || config.dev.port
@@ -70,11 +78,11 @@ portfinder.getPort((err, port) => {
 
     var uri = 'http://localhost:' + port
 
-    devMiddleware.waitUntilValid(function () {
+    devMiddleware.waitUntilValid(function() {
         console.log('> Listening at ' + uri + '\n')
     })
 
-    app.listen(port, function (err) {
+    app.listen(port, function(err) {
         if (err) {
             console.log(err)
             return

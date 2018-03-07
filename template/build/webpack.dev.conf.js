@@ -5,10 +5,14 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+var dllName = require('./utils').getDllNames()
+var env = process.env.ENV || 'dev'
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(
+        baseWebpackConfig.entry[name]
+    )
 })
 
 module.exports = merge(baseWebpackConfig, {
@@ -28,7 +32,15 @@ module.exports = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'build/tpl/index.html',
-            inject: true
+            inject: true,
+            dllName,
+            dllPre: env + '/',
+            staticHost:
+                process.env.NODE_ENV === 'production'
+                    ? config.build.assetsPublicPath +
+                      config.build.assetsSubDirectory +
+                      '/'
+                    : config.dev.assetsPublicPath
         }),
         new FriendlyErrorsPlugin()
     ]

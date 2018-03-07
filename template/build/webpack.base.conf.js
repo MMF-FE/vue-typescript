@@ -4,6 +4,7 @@ var config = require('./config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var env = process.env.ENV || 'dev'
 var webpack = require('webpack')
+var package = require('../package.json')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -23,21 +24,19 @@ module.exports = {
         path: config.build.assetsRoot,
         filename: '[name].js',
         chunkFilename: '[name].bundle.js',
-        publicPath: process.env.NODE_ENV === 'production'
-            ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath
+        publicPath:
+            process.env.NODE_ENV === 'production'
+                ? config.build.assetsPublicPath
+                : config.dev.assetsPublicPath
     },
     resolve: {
         extensions: ['.ts', '.vue', '.js', '.json'],
-        modules: [
-            resolve('src'),
-            resolve('node_modules')
-        ],
+        modules: [resolve('src'), resolve('node_modules')],
         alias: {
-            'vue$': 'vue/dist/vue.runtime.esm.js',
-            'env': resolve(`src/env/${env}`),
-            'assets': resolve('src/assets'),
-            'md5': 'blueimp-md5'
+            vue$: 'vue/dist/vue.runtime.esm.js',
+            env: resolve(`src/env/${env}`),
+            assets: resolve('src/assets'),
+            md5: 'blueimp-md5'
         }
     },
     module: {
@@ -53,6 +52,16 @@ module.exports = {
                 include: [resolve('src'), resolve('test')],
                 options: {
                     transpileOnly: true
+                }
+            },
+            {
+                test: /\.ts$/,
+                enforce: 'pre',
+                include: [resolve('src')],
+                exclude: [resolve('node_modules'), /index\.ts$/],
+                loader: 'tslint-loader',
+                options: {
+                    emitErrors: true
                 }
             },
             {
@@ -72,5 +81,22 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.version': JSON.stringify(package.version)
+        }),
+
+        // @ts-ignore
+        new webpack.DllReferencePlugin({
+            // @ts-ignore
+            manifest: require('./manifest/vendor-manifest.json')
+        }),
+
+        // @ts-ignore
+        new webpack.DllReferencePlugin({
+            // @ts-ignore
+            manifest: require('./manifest/vue-manifest.json')
+        })
+    ]
 }

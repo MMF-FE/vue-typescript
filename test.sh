@@ -5,4 +5,5 @@ cd test
 yarn
 # npm run lint
 # npm test
-npm run build
+yarn dll
+yarn dev

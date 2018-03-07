@@ -10,6 +10,5 @@ node_modules
 .npm
 
 test/*
-test2/*
 
 docs/_book

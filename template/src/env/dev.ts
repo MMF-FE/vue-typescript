@@ -1,4 +1,5 @@
 // dev config
 export default {
-    env: 'dev'
+    env: 'dev',
+    version: process.env.version
 }
