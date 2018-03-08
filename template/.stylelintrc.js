@@ -1,7 +1,5 @@
 /**
  * stylelint 配置
- * @author Allenice <994298628@qq.com>
- * @date 2017-07-20 09:57:50
  */
 
 module.exports = {

@@ -21,14 +21,23 @@ let user = os.userInfo({ encoding: 'utf8' })
 const tab = '    '
 
 function build(data) {
-    let outFile = data.outFile
+    let outFile: string = data.outFile
+    let viewPath: string = data.args.viewPath
+    let srcReg = /^src\//
+
+    // 如果 src 开头的话，去掉 src
+    if (srcReg.test(viewPath)) {
+        viewPath = viewPath.replace(srcReg, '')
+    }
+
     let renderData = {
         username: data.context.username,
         curDate: data.context.curDate,
         version: data.context.version,
         routerName: data.args.routerName,
-        componentPath: data.args.viewPath
+        componentPath: viewPath
     }
+
     let code = compileFile(
         path.join(__dirname, '../tpl/router/router.ts.txt'),
         renderData

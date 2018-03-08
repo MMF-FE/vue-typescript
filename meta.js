@@ -38,5 +38,5 @@ module.exports = {
     "src/store/**/*": "vuex",
     "typings/interface/state.d.ts": "vuex"
   },
-  "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn\n  yarn dll\n  npm run dev.{{/inPlace}}"
+  "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn\n  yarn dll\n  yarn dev.{{/inPlace}}"
 }
