@@ -4,8 +4,10 @@ var config = require('./config')
 var env = process.env.ENV || 'dev'
 require('shelljs/global')
 
-rm(path.join(config.build.assetsRoot, '**/*.dll.*.js'))
-rm(path.join(config.build.assetsRoot, '**/*.dll.*.js.map'))
+const assetsRoot = config.build.assetsRoot
+
+rm(path.join(assetsRoot, '**/*.dll.*.js'))
+rm(path.join(assetsRoot, '**/*.dll.*.js.map'))
 
 let webpackConfig = {
     entry: {
@@ -21,8 +23,8 @@ let webpackConfig = {
         ]
     },
     output: {
-        path: config.build.assetsRoot,
-        filename: '[name].dll.[chunkhash].js',
+        path: path.join(assetsRoot, config.build.assetsSubDirectory),
+        filename: 'dll/[name].dll.[chunkhash].js',
         library: '[name]_library',
         publicPath:
             env === 'dev'
@@ -48,12 +50,12 @@ let webpackConfig = {
             /^\.\/(en)$/
         ),
         new webpack.DllPlugin({
-            path: path.join(__dirname, './manifest', '[name]-manifest.json'),
+            path: path.join(assetsRoot, 'manifest', '[name]-manifest.json'),
             name: '[name]_library'
         })
     ]
 }
-if (env !== 'dev') {
+if (process.env.NODE_ENV !== 'development') {
     webpackConfig.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {

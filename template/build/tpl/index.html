@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <title>vue8</title>
-  </head>
-  <body>
+    <title>{{ name }}</title>
+</head>
+
+<body>
     <div id="app"></div>
-    <script src="<%= htmlWebpackPlugin.options.staticHost %><%= htmlWebpackPlugin.options.dllPre %><%= htmlWebpackPlugin.options.dllName['vendor.dll'] %>"></script>
-    <script src="<%= htmlWebpackPlugin.options.staticHost %><%= htmlWebpackPlugin.options.dllPre %><%= htmlWebpackPlugin.options.dllName['vue.dll'] %>"></script>
+    <script src="<%= htmlWebpackPlugin.options.staticHost %><%= htmlWebpackPlugin.options.assetsPublicPath %><%= htmlWebpackPlugin.options.dllName['vendor.dll'] %>"></script>
+    <script src="<%= htmlWebpackPlugin.options.staticHost %><%= htmlWebpackPlugin.options.assetsPublicPath %><%= htmlWebpackPlugin.options.dllName['vue.dll'] %>"></script>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>

@@ -94,7 +94,7 @@ Vue.use(svgicon, {
 <div class="icon-list">
     <div class="icon" v-for="v in iconList">
         <icon :name="v" original></icon>
-        <p class="icon-name">{{ v }}</p>
+        <p class="icon-name">\{{ v }}</p>
     </div>
 </div>
 ```

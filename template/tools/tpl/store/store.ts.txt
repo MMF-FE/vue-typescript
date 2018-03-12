@@ -5,7 +5,6 @@
  * @since ${version}
  */
 
-import Vuex from 'vuex'
 import keymirror from 'store/utils/keymirror'
 import api from 'api'
 

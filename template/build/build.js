@@ -2,38 +2,77 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
-var ora = require('ora')
-var rm = require('rimraf')
-var path = require('path')
-var chalk = require('chalk')
-var webpack = require('webpack')
-var config = require('./config')
-var webpackConfig = require('./webpack.prod.conf')
+const ora = require('ora')
+const rm = require('rimraf')
+const path = require('path')
+const chalk = require('chalk')
+const webpack = require('webpack')
+const inquirer = require('inquirer')
+const envList = ['doc', 'dev', 'sit', 'deploy']
 
-var spinner = ora('building for production...')
-spinner.start()
+async function build() {
+    if (!process.env.ENV) {
+        throw new Error('请设置 process.env.ENV')
+        process.exit(1)
+    }
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
-    if (err) throw err
-    webpack(webpackConfig, function(err, stats) {
-        spinner.stop()
-        if (err) throw err
-        process.stdout.write(
-            stats.toString({
-                colors: true,
-                modules: false,
-                children: false,
-                chunks: false,
-                chunkModules: false
-            }) + '\n\n'
-        )
+    if (envList.indexOf(process.env.ENV) < 0) {
+        throw new Error('没有对应的 ENV')
+        process.exit(1)
+    }
 
-        console.log(chalk.cyan('  Build complete.\n'))
-        console.log(
-            chalk.yellow(
-                '  Tip: built files are meant to be served over an HTTP server.\n' +
-                    "  Opening index.html over file:// won't work.\n"
-            )
-        )
-    })
-})
+    const config = require('./config')
+    const utils = require('./utils')
+
+    rm(
+        path.join(config.build.assetsRoot, config.build.assetsSubDirectory),
+        async err => {
+            if (err) throw err
+            try {
+                let loader = utils.loading('building for dll...')
+                const dllWebpackConfig = require('./webpack.dll.conf')
+                await utils.runWebpack(dllWebpackConfig)
+                loader.stop()
+
+                loader = utils.loading('building for production... ')
+                const webpackConfig = require('./webpack.prod.conf')
+                await utils.runWebpack(webpackConfig)
+                loader.stop()
+
+                console.log(chalk.cyan('  Build complete.\n'))
+                console.log(
+                    chalk.yellow(
+                        '  Tip: built files are meant to be served over an HTTP server.\n' +
+                            "  Opening index.html over file:// won't work.\n"
+                    )
+                )
+            } catch (error) {
+                console.log(chalk.red(error))
+            }
+        }
+    )
+}
+
+if (!module.parent) {
+    // 直接运行
+    ;(async function() {
+        let answers = null
+        // 如果没有指明坏境就询问
+        if (!process.env.ENV) {
+            answers = await inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'env',
+                    message: '要 build 的坏境是?',
+                    choices: envList,
+                    default: 'dev'
+                }
+            ])
+            process.env.ENV = answers.env
+        }
+        build()
+    })()
+} else {
+    // 被其他模块调用
+    module.exports = build
+}

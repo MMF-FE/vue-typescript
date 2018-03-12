@@ -22,8 +22,10 @@ yarn svg
 请查看 [CLI](/#/tutorial__cli) 一节
 
 ### 编写文档
-```
+```bash
 # 开发
+# 第一次先运行 yarn dll:doc
+yarn dll:doc
 yarn doc
 
 # 查看 build 后的文档
@@ -32,15 +34,16 @@ yarn doc:open
 
 ### build
 ```
-yarn build:doc      # build 文档
-yarn build:dev      # build dev 环境
-yarn build:sit      # build 测试环境
-yarn build:deploy   # build 生产环境
+yarn build
 ```
-
-### 部署代码
-```
-yarn deploy
+build 提供了编程接口以便 git hooks 使用。
+```js
+async function onUpdate() {
+    let build = require('build/build')
+    // 设置 build 的坏境
+    process.env.ENV = 'dev'
+    await build()
+}
 ```
 
 ### update 更新依赖包
