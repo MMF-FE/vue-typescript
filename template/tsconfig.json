@@ -6,31 +6,14 @@
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "baseUrl": "./src",
-        "rootDirs": [
-            "./src"
-        ],
         "alwaysStrict": true,
         "allowJs": true,
+        "noUnusedLocals": true,
         "importHelpers": true,
         "experimentalDecorators": true,
-        "lib": [
-            "es5",
-            "es2015.promise",
-            "es2015.generator",
-            "dom"
-        ],
-        "typeRoots": [
-            "node_modules/@types",
-            "typings"
-        ]
+        "lib": ["es5", "es2015.promise", "es2015.generator", "dom"],
+        "typeRoots": ["node_modules/@types", "typings"]
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.vue",
-        "typings/**/*.ts"
-    ],
-    "exclude": [
-        "./dist",
-        "./static"
-    ]
+    "include": ["src/**/*.ts", "src/**/*.vue", "typings/**/*.ts"],
+    "exclude": ["./dist", "./static"]
 }

@@ -5,4 +5,5 @@
  * @since ${version}
  */
 
-export * from './${componentName}'
+import ${ComponentName} from './${componentName}'
+export default ${ComponentName}

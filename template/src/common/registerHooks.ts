@@ -4,7 +4,4 @@
 
 import { Component } from 'vue-property-decorator'
 
- Component.registerHooks([
-     'beforeRouteEnter',
-     'beforeRouteLeave'
- ])
+Component.registerHooks(['beforeRouteEnter', 'beforeRouteLeave'])

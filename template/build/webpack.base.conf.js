@@ -1,15 +1,18 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('./config')
-var vueLoaderConfig = require('./vue-loader.conf')
-var env = process.env.ENV || 'dev'
-var webpack = require('webpack')
+const path = require('path')
+const utils = require('./utils')
+const config = require('./config')
+const vueLoaderConfig = require('./vue-loader.conf')
+const env = process.env.ENV || 'dev'
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const packageConfig = require('../package.json')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+let baseWebpackConfig = {
+    context: path.resolve(__dirname, '../'),
     entry: {
         style: './src/style/app.scss',
         {{#if_eq ie true}}
@@ -23,21 +26,18 @@ module.exports = {
         path: config.build.assetsRoot,
         filename: '[name].js',
         chunkFilename: '[name].bundle.js',
-        publicPath: process.env.NODE_ENV === 'production'
-            ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath
+        publicPath:
+            process.env.NODE_ENV === 'production'
+                ? config.build.assetsPublicPath
+                : config.dev.assetsPublicPath
     },
     resolve: {
         extensions: ['.ts', '.vue', '.js', '.json'],
-        modules: [
-            resolve('src'),
-            resolve('node_modules')
-        ],
+        modules: [resolve('src'), resolve('node_modules')],
         alias: {
-            'vue$': 'vue/dist/vue.runtime.esm.js',
-            'env': resolve(`src/env/${env}`),
-            'assets': resolve('src/assets'),
-            'md5': 'blueimp-md5'
+            vue$: 'vue/dist/vue.runtime.esm.js',
+            env: resolve(`src/env/${env}`),
+            assets: resolve('src/assets')
         }
     },
     module: {
@@ -56,11 +56,29 @@ module.exports = {
                 }
             },
             {
+                test: /\.ts$/,
+                enforce: 'pre',
+                include: [resolve('src')],
+                exclude: [resolve('node_modules'), /index\.ts$/],
+                loader: 'tslint-loader',
+                options: {
+                    emitErrors: true
+                }
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 query: {
                     limit: 10000,
                     name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -72,5 +90,36 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    node: {
+        // prevent webpack from injecting useless setImmediate polyfill because Vue
+        // source contains it (although only uses it if it's native).
+        setImmediate: false,
+        // prevent webpack from injecting mocks to Node native modules
+        // that does not make sense for the client
+        dgram: 'empty',
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty',
+        child_process: 'empty'
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.version': JSON.stringify(packageConfig.version)
+        }),
+        new webpack.DllReferencePlugin({
+            manifest: require(`../dist/${env}/manifest/vendor-manifest.json`)
+        }),
+
+        new webpack.DllReferencePlugin({
+            manifest: require(`../dist/${env}/manifest/vue-manifest.json`)
+        })
+    ]
 }
+
+if (env === 'doc') {
+    const docWebpackConfig = require('./webpack.doc.conf')
+    baseWebpackConfig = merge(baseWebpackConfig, docWebpackConfig)
+}
+
+module.exports = baseWebpackConfig

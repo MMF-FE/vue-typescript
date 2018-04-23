@@ -1,6 +1,6 @@
-# {{ name }}
+# vue8
 
-> {{ description }}
+> A Vue.js project
 
 ## Build Setup
 
@@ -31,3 +31,9 @@ npm run cli add [componentPath] -- -t [componentType]
 # use yarn
 yarn cli add [componentPath] -- -t [componentType]
 ```
+
+https://github.com/vue-bulma/vue-admin
+https://github.com/vuejs/vue-hackernews-2.0
+https://github.com/PanJiaChen/vue-element-admin
+https://github.com/vuejs/vue-devtools
+https://medium.mybridge.co/30-amazing-vue-js-open-source-projects-for-the-past-year-v-2018-d39a0d019bb7

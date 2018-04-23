@@ -1,16 +1,18 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router, { RouteConfig } from 'vue-router'
 
 // routes
 import homeRoute from './home'
-import productRoute from './product'
+/** auto import */
 
 Vue.use(Router)
 
-let routes: Router.RouteConfig[] = []
+// prettier-ignore
+let routes: RouteConfig[] = []
+    .concat(homeRoute)
+    /** auto concat */
+    .concat([])
 
 export default new Router({
-    routes: routes
-        .concat(homeRoute)
-        .concat(productRoute)
+    routes
 })

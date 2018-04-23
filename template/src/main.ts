@@ -15,10 +15,8 @@ import router from 'router'
 import store from 'store'
 {{/vuex}}
 
-import App from 'components/pages/app'
+import App from 'pages/App'
 
-// import all icons
-import 'components/icons'
 Vue.use(svgicon, {
     tagName: 'icon'
 })

@@ -2,7 +2,7 @@
  * Create an object with values equal to its key names.
  */
 
-export default function <T>(obj: T): {[K in keyof T]: string } {
+export default function<T>(obj: T): { [K in keyof T]: string } {
     let ret = {}
     let key
 
@@ -12,5 +12,5 @@ export default function <T>(obj: T): {[K in keyof T]: string } {
         }
     }
 
-    return ret as {[K in keyof T]: K }
+    return ret as { [K in keyof T]: K }
 }
