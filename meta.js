@@ -43,38 +43,7 @@ module.exports = {
     ie: {
       type: 'confirm',
       message: ' Support IE or older browser?'
-    },
-    vuex: {
-      type: 'confirm',
-      message: 'Use vuex?'
-    },
-    autoInstall: {
-      type: 'list',
-      message:
-        'Should we run `npm install` for you after the project has been created? (recommended)',
-      choices: [
-        {
-          name: 'Yes, use NPM',
-          value: 'npm',
-          short: 'npm',
-        },
-        {
-          name: 'Yes, use Yarn',
-          value: 'yarn',
-          short: 'yarn',
-        },
-        {
-          name: 'No, I will handle that myself',
-          value: false,
-          short: 'no',
-        },
-      ]
     }
-  },
-  filters: {
-    'src/components/views/todo/**/*': 'vuex',
-    'src/store/**/*': 'vuex',
-    'typings/interface/state.d.ts': 'vuex'
   },
   complete(data, { chalk }) {
     const green = chalk.green

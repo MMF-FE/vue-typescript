@@ -48,7 +48,8 @@ module.exports = {
         // Paths
         assetsRoot: path.resolve(__dirname, `../../dist/${env}`),
         assetsSubDirectory: 'static',
-        assetsPublicPath: env === 'doc' ? '' : '/',
+        assetsPublicPath:
+            env === 'doc' ? '' : 'https://mmf-wx-ali.meimeifa.com/lite-h5/',
 
         /**
          * Source Maps

@@ -44,7 +44,6 @@ let command: yargs.CommandModule = {
             return false
         }
 
-        let type = args.type
         let distFilePath = path.join(path.resolve(), args.componentPath)
 
         generate(distFilePath, {

@@ -5,8 +5,6 @@
 
 'use strict'
 
-import * as fs from 'fs-extra'
-import * as path from 'path'
 import * as yargs from 'yargs'
 import add from './command/add'
 import snippet from './command/snippet'

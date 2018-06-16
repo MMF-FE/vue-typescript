@@ -1,9 +1,7 @@
-import { Gender } from 'common/enum'
+import * as enums from 'common/enum'
 import util from 'common/util'
 
-let constants = {
-    Gender
-}
+let constants = Object.assign({}, enums);
 
 util.deepFreeze(constants)
 

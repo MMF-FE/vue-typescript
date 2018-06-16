@@ -16,12 +16,7 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 let devWebpackConfig = merge(baseWebpackConfig, {
-    module: {
-        rules: utils.styleLoaders({
-            sourceMap: config.dev.cssSourceMap,
-            usePostCSS: true
-        })
-    },
+    mode: 'development',
     // cheap-module-eval-source-map is faster for development
     devtool: config.dev.devtool,
     // these devServer options should be customized in /config/index.js
@@ -75,6 +70,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
             filename: 'index.html',
             template: 'build/tpl/index.html',
             inject: true,
+            chunksSortMode: 'none',
             dllName,
             assetsPublicPath: config.dev.assetsPublicPath,
             staticHost: ''

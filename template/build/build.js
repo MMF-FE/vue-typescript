@@ -8,7 +8,7 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const inquirer = require('inquirer')
-const envList = ['doc', 'dev', 'sit', 'deploy']
+const envList = ['doc', 'dev', 'sit', 'uat', 'deploy']
 
 async function build() {
     if (!process.env.ENV) {
@@ -24,33 +24,37 @@ async function build() {
     const config = require('./config')
     const utils = require('./utils')
 
-    rm(
-        path.join(config.build.assetsRoot, config.build.assetsSubDirectory),
-        async err => {
-            if (err) throw err
-            try {
-                let loader = utils.loading('building for dll...')
-                const dllWebpackConfig = require('./webpack.dll.conf')
-                await utils.runWebpack(dllWebpackConfig)
-                loader.stop()
+    return new Promise((resolve, reject) => {
+        rm(
+            path.join(config.build.assetsRoot, config.build.assetsSubDirectory),
+            async err => {
+                if (err) return reject(err)
+                try {
+                    let loader = utils.loading('building for dll...')
+                    const dllWebpackConfig = require('./webpack.dll.conf')
+                    await utils.runWebpack(dllWebpackConfig)
+                    loader.stop()
 
-                loader = utils.loading('building for production... ')
-                const webpackConfig = require('./webpack.prod.conf')
-                await utils.runWebpack(webpackConfig)
-                loader.stop()
+                    loader = utils.loading('building for production... ')
+                    const webpackConfig = require('./webpack.prod.conf')
+                    await utils.runWebpack(webpackConfig)
+                    loader.stop()
 
-                console.log(chalk.cyan('  Build complete.\n'))
-                console.log(
-                    chalk.yellow(
-                        '  Tip: built files are meant to be served over an HTTP server.\n' +
-                            "  Opening index.html over file:// won't work.\n"
+                    console.log(chalk.cyan('  Build complete.\n'))
+                    console.log(
+                        chalk.yellow(
+                            '  Tip: built files are meant to be served over an HTTP server.\n' +
+                                "  Opening index.html over file:// won't work.\n"
+                        )
                     )
-                )
-            } catch (error) {
-                console.log(chalk.red(error))
+                    resolve()
+                } catch (error) {
+                    console.log(chalk.red(error))
+                    reject(error)
+                }
             }
-        }
-    )
+        )
+    })
 }
 
 if (!module.parent) {

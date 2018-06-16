@@ -10,6 +10,7 @@ rm(path.join(assetsRoot, '**/*.dll.*.js'))
 rm(path.join(assetsRoot, '**/*.dll.*.js.map'))
 
 let webpackConfig = {
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
         vendor: ['tslib'],
         vue: [
@@ -45,25 +46,11 @@ let webpackConfig = {
         }),
 
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.ContextReplacementPlugin(
-            /moment[\\\/]locale$/,
-            /^\.\/(en)$/
-        ),
         new webpack.DllPlugin({
             path: path.join(assetsRoot, 'manifest', '[name]-manifest.json'),
             name: '[name]_library'
         })
     ]
-}
-if (process.env.NODE_ENV !== 'development') {
-    webpackConfig.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            sourceMap: true
-        })
-    )
 }
 
 module.exports = webpackConfig

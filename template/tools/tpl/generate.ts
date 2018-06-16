@@ -62,7 +62,7 @@ export default async function(distPath, data) {
             } is exist. Do your want to override it?`
         })
 
-        if (answer.isOverride) {
+        if (answer['isOverride']) {
             writeFiles(distPath, data)
         }
     } else {

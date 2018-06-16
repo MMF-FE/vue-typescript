@@ -11,7 +11,6 @@ import * as inq from 'inquirer'
 
 import getGitUser from '../util/getGitUser'
 import getDate from '../util/getDate'
-import generate from '../tpl/generate'
 import { compileFile } from '../util/compiler'
 
 // tslint:disable-next-line
@@ -70,7 +69,7 @@ let command: yargs.CommandModule = {
                     data.outFile
                 }" is exist. Do your want to override it?`
             })
-            if (answer.isOverride) {
+            if (answer['isOverride']) {
                 build(data)
             }
         } else {

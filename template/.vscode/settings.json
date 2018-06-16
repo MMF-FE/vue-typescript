@@ -1,3 +1,4 @@
 {
-    "prettier.stylelintIntegration": true
+    "prettier.stylelintIntegration": true,
+    "editor.formatOnSave": true
 }

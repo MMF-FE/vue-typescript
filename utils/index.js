@@ -40,8 +40,6 @@ exports.installDependencies = function installDependencies(
     return runCommand(executable, ['run svg'], { cwd })
   }).then(function() {
     return runCommand(executable, ['run dll'], { cwd })
-  }).then(function() {
-    return runCommand(executable, ['run dll:doc'], { cwd })
   })
 }
 
@@ -50,7 +48,7 @@ exports.installDependencies = function installDependencies(
  * @param {Object} data Data from questionnaire.
  */
 exports.printMessage = function printMessage(data, { green, yellow }) {
-  const executable = executableCMD(data)
+  const executable = executableCMD(data) || 'npm'
   const message = `
 # ${green('Project initialization finished!')}
 # ========================
@@ -60,7 +58,7 @@ To get started:
   ${yellow(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
-    )}${executable} dll\n  ${executable} dll:doc\n  ${executable} svg\n  ${executable} dev`
+    )}${executable} dll\n  ${executable} svg\n  ${executable} dev`
   )}
   
 Documentation can be found at https://vuejs-templates.github.io/webpack

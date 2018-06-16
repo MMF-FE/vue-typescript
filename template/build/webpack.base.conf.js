@@ -6,6 +6,9 @@ const env = process.env.ENV || 'dev'
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const packageConfig = require('../package.json')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+const isProduction = process.env.NODE_ENV === 'production'
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -14,7 +17,10 @@ function resolve(dir) {
 let baseWebpackConfig = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        style: './src/style/app.scss',
+        style: [
+            './node_modules/normalize.css/normalize.css',
+            './src/style/app.scss'
+        ],
         {{#if_eq ie true}}
         app: ['babel-polyfill', './src/main.ts']
         {{/if_eq}}
@@ -50,25 +56,69 @@ let baseWebpackConfig = {
             {
                 test: /\.ts$/,
                 loader: 'ts-loader',
-                include: [resolve('src'), resolve('test')],
+                include: [resolve('src'), resolve('test'), resolve('docs')],
                 options: {
                     transpileOnly: true
                 }
             },
             {
                 test: /\.ts$/,
+                loader: 'tslint-loader',
                 enforce: 'pre',
                 include: [resolve('src')],
-                exclude: [resolve('node_modules'), /index\.ts$/],
-                loader: 'tslint-loader',
+                exclude: [
+                    resolve('node_modules'),
+                    /index\.ts$/,
+                    resolve('src/views/Doc/vmd')
+                ],
                 options: {
                     emitErrors: true
                 }
             },
             {
+                test: /\.scss$/,
+                use: [
+                    isProduction
+                        ? MiniCssExtractPlugin.loader
+                        : 'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: vueLoaderConfig.cssSourceMap
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: vueLoaderConfig.cssSourceMap,
+                            includePaths: [
+                                path.join(__dirname, '../src/style'),
+                                path.join(__dirname, '../node_modules')
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    isProduction
+                        ? MiniCssExtractPlugin.loader
+                        : 'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: vueLoaderConfig.cssSourceMap
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
-                query: {
+                options: {
                     limit: 10000,
                     name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
@@ -84,12 +134,18 @@ let baseWebpackConfig = {
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
-                query: {
+                options: {
                     limit: 10000,
                     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            automaticNameDelimiter: '-'
+        }
     },
     node: {
         // prevent webpack from injecting useless setImmediate polyfill because Vue
@@ -104,6 +160,7 @@ let baseWebpackConfig = {
         child_process: 'empty'
     },
     plugins: [
+        new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env.version': JSON.stringify(packageConfig.version)
         }),
