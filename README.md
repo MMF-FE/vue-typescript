@@ -15,6 +15,8 @@ $ npm install -g vue-cli
 $ vue init MMF-FE/vue-typescript my-project
 $ cd my-project
 $ npm install
+$ npm run dll
+$ npm run svg
 $ npm run dev
 ```
 
